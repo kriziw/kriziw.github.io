@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Releases | TaskBandit Docs</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="shell page-hero">
+      <p class="eyebrow">Releases</p>
+      <h1>Release automation and artifacts.</h1>
+      <p>TaskBandit uses release-please to prepare releases, publish Docker images, and attach Android APK artifacts.</p>
+    </header>
+    <main class="shell doc-layout">
+      <aside class="sidebar" aria-label="Documentation navigation">
+        <a href="./quick-start.html">Quick Start</a>
+        <a href="./deployment.html">Deployment</a>
+        <a href="./clients.html">Clients</a>
+        <a href="./configuration.html">Configuration</a>
+        <a aria-current="page" href="./releases.html">Releases</a>
+        <a href="./development.html">Development</a>
+      </aside>
+      <div>
+        <section class="doc-panel">
+          <h2>Published images</h2>
+          <ul>
+            <li><code>kriziw/taskbandit</code> for the API server.</li>
+            <li><code>kriziw/taskbandit-web</code> for the shared web container.</li>
+          </ul>
+        </section>
+        <section class="doc-panel">
+          <h2>Version tags</h2>
+          <p>Stable releases publish version tags, <code>v</code>-prefixed version tags, and <code>latest</code>. Prereleases publish version tags plus the mutable <code>prerelease</code> tag.</p>
+        </section>
+        <section class="doc-panel">
+          <h2>Repository settings</h2>
+          <ul>
+            <li><code>PRE_RELEASE_SETTING</code> controls prerelease mode.</li>
+            <li><code>RELEASE_PLEASE_TOKEN</code> is recommended so release automation can create PRs, tags, and releases reliably.</li>
+            <li><code>DOCKERHUB_USERNAME</code> and <code>DOCKERHUB_TOKEN</code> are required for image publishing.</li>
+          </ul>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

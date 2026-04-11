@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Deployment | TaskBandit Docs</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="shell page-hero">
+      <p class="eyebrow">Deployment</p>
+      <h1>Two containers, clear boundaries.</h1>
+      <p>The server handles API/auth/realtime work. The web container serves both browser surfaces.</p>
+    </header>
+    <main class="shell doc-layout">
+      <aside class="sidebar" aria-label="Documentation navigation">
+        <a href="./quick-start.html">Quick Start</a>
+        <a aria-current="page" href="./deployment.html">Deployment</a>
+        <a href="./clients.html">Clients</a>
+        <a href="./configuration.html">Configuration</a>
+        <a href="./releases.html">Releases</a>
+        <a href="./development.html">Development</a>
+      </aside>
+      <div>
+        <section class="doc-panel">
+          <h2>Container layout</h2>
+          <table>
+            <thead>
+              <tr><th>Container</th><th>Purpose</th><th>Default access</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>taskbandit-server</code></td><td>NestJS API, auth, realtime sync, notification delivery</td><td><code>http://localhost:8080</code></td></tr>
+              <tr><td><code>taskbandit-web</code></td><td>Static client UI/PWA and admin UI</td><td><code>http://localhost:4173</code></td></tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="doc-panel">
+          <h2>Routes</h2>
+          <ul>
+            <li><code>/</code> serves the client UI and installable browser PWA.</li>
+            <li><code>/admin</code> serves household configuration, templates, translations, and operations tools.</li>
+            <li><code>/health</code> remains on the API server.</li>
+          </ul>
+        </section>
+        <section class="doc-panel">
+          <h2>Reverse proxy</h2>
+          <p>Terminate TLS at your proxy. Route API traffic to <code>taskbandit-server:8080</code> and web traffic to <code>taskbandit-web:80</code>. Set <code>TASKBANDIT_CORS_ALLOWED_ORIGINS</code> to the exact browser origin that should call the API.</p>
+        </section>
+        <section class="doc-panel">
+          <h2>Upgrade order</h2>
+          <p>Update the server and web containers together from the same <code>TASKBANDIT_IMAGE_TAG</code>. Then update native Android clients after the newer server is running.</p>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

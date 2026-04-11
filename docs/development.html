@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Development | TaskBandit Docs</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="shell page-hero">
+      <p class="eyebrow">Development</p>
+      <h1>Work on TaskBandit locally.</h1>
+      <p>Use the repo docs for deep implementation details; this page is the high-level setup map.</p>
+    </header>
+    <main class="shell doc-layout">
+      <aside class="sidebar" aria-label="Documentation navigation">
+        <a href="./quick-start.html">Quick Start</a>
+        <a href="./deployment.html">Deployment</a>
+        <a href="./clients.html">Clients</a>
+        <a href="./configuration.html">Configuration</a>
+        <a href="./releases.html">Releases</a>
+        <a aria-current="page" href="./development.html">Development</a>
+      </aside>
+      <div>
+        <section class="doc-panel">
+          <h2>Required tools</h2>
+          <ul>
+            <li>Docker Desktop for PostgreSQL and container validation.</li>
+            <li>Node.js 24 or later with npm for the server and web workspaces.</li>
+            <li>JDK 17+ plus Android Studio or a Gradle-compatible Android toolchain for the native app.</li>
+          </ul>
+        </section>
+        <section class="doc-panel">
+          <h2>Local web development</h2>
+          <pre><code>cd apps/web
+npm install
+npm run dev:client
+npm run dev:admin</code></pre>
+          <p>The production web image serves both entrypoints together, but local development can still run the client and admin Vite dev servers separately.</p>
+        </section>
+        <section class="doc-panel">
+          <h2>Local server development</h2>
+          <pre><code>cd apps/server
+npm install
+npm run prisma:generate
+npm run build
+npm run test</code></pre>
+        </section>
+        <section class="doc-panel">
+          <h2>Source repository</h2>
+          <p>Implementation docs, API notes, and current code live in <a href="https://github.com/kriziw/TaskBandit">kriziw/TaskBandit</a>.</p>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
