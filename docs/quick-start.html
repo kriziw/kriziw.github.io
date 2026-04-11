@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quick Start | TaskBandit Docs</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="shell page-hero">
+      <p class="eyebrow">Quick Start</p>
+      <h1>Start a local TaskBandit stack.</h1>
+      <p>Use Docker Compose to run PostgreSQL, the API server, and the shared web container.</p>
+    </header>
+    <main class="shell doc-layout">
+      <aside class="sidebar" aria-label="Documentation navigation">
+        <a aria-current="page" href="./quick-start.html">Quick Start</a>
+        <a href="./deployment.html">Deployment</a>
+        <a href="./clients.html">Clients</a>
+        <a href="./configuration.html">Configuration</a>
+        <a href="./releases.html">Releases</a>
+        <a href="./development.html">Development</a>
+      </aside>
+      <div>
+        <section class="doc-panel">
+          <h2>Fastest setup</h2>
+          <p>Download the Compose file and example environment, then start the stack.</p>
+          <pre><code>mkdir -p taskbandit
+cd taskbandit
+wget -O docker-compose.yml https://raw.githubusercontent.com/kriziw/TaskBandit/main/docker-compose.yml
+wget -O .env https://raw.githubusercontent.com/kriziw/TaskBandit/main/.env.example
+docker compose up -d</code></pre>
+        </section>
+        <section class="doc-panel">
+          <h2>Open the UIs</h2>
+          <ul>
+            <li>Client web UI/PWA: <code>http://localhost:4173/</code></li>
+            <li>Admin web UI: <code>http://localhost:4173/admin</code></li>
+            <li>API health check: <code>http://localhost:8080/health</code></li>
+          </ul>
+        </section>
+        <section class="doc-panel">
+          <h2>Demo sign-in</h2>
+          <p>If demo seed data is enabled, these accounts use the password <code>TaskBandit123!</code>.</p>
+          <ul>
+            <li><code>alex@taskbandit.local</code></li>
+            <li><code>maya@taskbandit.local</code></li>
+            <li><code>luca@taskbandit.local</code></li>
+          </ul>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

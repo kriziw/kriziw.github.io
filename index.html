@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TaskBandit Docs</title>
+    <meta
+      name="description"
+      content="TaskBandit documentation for self-hosting, clients, configuration, and releases."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav shell" aria-label="Main navigation">
+        <a class="brand" href="./index.html">TaskBandit Docs</a>
+        <div class="nav-links">
+          <a href="./docs/quick-start.html">Quick Start</a>
+          <a href="./docs/deployment.html">Deployment</a>
+          <a href="./docs/clients.html">Clients</a>
+          <a href="./docs/configuration.html">Configuration</a>
+          <a href="https://github.com/kriziw/TaskBandit">GitHub</a>
+        </div>
+      </nav>
+      <section class="hero shell">
+        <p class="eyebrow">Self-hosted household chore management</p>
+        <h1>Run TaskBandit with confidence.</h1>
+        <p>
+          A practical guide for installing, configuring, operating, and updating the TaskBandit
+          server, web client, admin UI, native Android app, and browser PWA.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="./docs/quick-start.html">Start self-hosting</a>
+          <a class="button secondary" href="./docs/deployment.html">View deployment model</a>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section class="shell feature-grid" aria-label="Documentation areas">
+        <a class="card" href="./docs/quick-start.html">
+          <span>01</span>
+          <h2>Quick Start</h2>
+          <p>Bring up PostgreSQL, the API server, and the shared web container with Docker Compose.</p>
+        </a>
+        <a class="card" href="./docs/deployment.html">
+          <span>02</span>
+          <h2>Deployment</h2>
+          <p>Understand the two-container production model, ports, reverse proxy routing, and upgrades.</p>
+        </a>
+        <a class="card" href="./docs/clients.html">
+          <span>03</span>
+          <h2>Clients</h2>
+          <p>Compare the admin UI, browser/PWA client, and native Android app responsibilities.</p>
+        </a>
+        <a class="card" href="./docs/configuration.html">
+          <span>04</span>
+          <h2>Configuration</h2>
+          <p>Review the key environment variables for auth, data, push notifications, and storage.</p>
+        </a>
+        <a class="card" href="./docs/releases.html">
+          <span>05</span>
+          <h2>Releases</h2>
+          <p>See how release-please, Android APKs, and Docker image publishing fit together.</p>
+        </a>
+        <a class="card" href="./docs/development.html">
+          <span>06</span>
+          <h2>Development</h2>
+          <p>Set up the local API, split web entrypoints, and Android development environment.</p>
+        </a>
+      </section>
+
+      <section class="shell callout">
+        <div>
+          <p class="eyebrow">Current production shape</p>
+          <h2>Two containers, two web surfaces.</h2>
+          <p>
+            TaskBandit now runs the API in <code>taskbandit-server</code> and serves both web
+            experiences from <code>taskbandit-web</code>: the client UI/PWA at <code>/</code> and
+            the admin UI at <code>/admin</code>.
+          </p>
+        </div>
+        <a class="button secondary" href="./docs/deployment.html">Read deployment notes</a>
+      </section>
+    </main>
+
+    <footer class="shell footer">
+      <span>TaskBandit documentation</span>
+      <a href="https://github.com/kriziw/TaskBandit/blob/main/LICENSE.md">AGPLv3</a>
+    </footer>
+  </body>
+</html>

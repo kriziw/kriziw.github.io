@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Configuration | TaskBandit Docs</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="shell page-hero">
+      <p class="eyebrow">Configuration</p>
+      <h1>Environment settings that matter.</h1>
+      <p>Most installs can start from <code>.env.example</code> and change only the public URLs, secrets, data paths, and optional providers.</p>
+    </header>
+    <main class="shell doc-layout">
+      <aside class="sidebar" aria-label="Documentation navigation">
+        <a href="./quick-start.html">Quick Start</a>
+        <a href="./deployment.html">Deployment</a>
+        <a href="./clients.html">Clients</a>
+        <a aria-current="page" href="./configuration.html">Configuration</a>
+        <a href="./releases.html">Releases</a>
+        <a href="./development.html">Development</a>
+      </aside>
+      <div>
+        <section class="doc-panel">
+          <h2>Core settings</h2>
+          <table>
+            <thead>
+              <tr><th>Variable</th><th>Use</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>TASKBANDIT_IMAGE_TAG</code></td><td>Pin both server and web containers to a published Docker tag.</td></tr>
+              <tr><td><code>TASKBANDIT_PORT</code></td><td>Host and container port for the API server. Default: <code>8080</code>.</td></tr>
+              <tr><td><code>TASKBANDIT_WEB_PORT</code></td><td>Host port for the shared web container. Default: <code>4173</code>.</td></tr>
+              <tr><td><code>TASKBANDIT_JWT_SECRET</code></td><td>Required secret for JWT signing. Change it for any real install.</td></tr>
+              <tr><td><code>TASKBANDIT_DATA_ROOT</code></td><td>Bind-mounted data folder for PostgreSQL and app-managed files.</td></tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="doc-panel">
+          <h2>Public browser URLs</h2>
+          <p>These values are injected into <code>taskbandit-web</code> at container startup, so the same image can be reused across environments.</p>
+          <ul>
+            <li><code>TASKBANDIT_PUBLIC_API_BASE_URL</code>, default <code>http://localhost:8080</code></li>
+            <li><code>TASKBANDIT_PUBLIC_CLIENT_BASE_URL</code>, default <code>http://localhost:4173</code></li>
+            <li><code>TASKBANDIT_PUBLIC_ADMIN_BASE_URL</code>, default <code>http://localhost:4173/admin</code></li>
+            <li><code>TASKBANDIT_CORS_ALLOWED_ORIGINS</code>, default <code>http://localhost:4173</code></li>
+          </ul>
+        </section>
+        <section class="doc-panel">
+          <h2>Optional providers</h2>
+          <ul>
+            <li>OIDC can be configured through the admin UI or with <code>TASKBANDIT_OIDC_*</code> fallback environment values.</li>
+            <li>SMTP is configured from the admin UI and powers password reset plus notification fallback.</li>
+            <li>Android FCM is optional and controlled by <code>TASKBANDIT_FCM_*</code> values.</li>
+            <li>Browser Web Push is optional and controlled by <code>TASKBANDIT_WEB_PUSH_PUBLIC_KEY</code>, <code>TASKBANDIT_WEB_PUSH_PRIVATE_KEY</code>, and <code>TASKBANDIT_WEB_PUSH_SUBJECT</code>.</li>
+          </ul>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
