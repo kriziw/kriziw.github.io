@@ -575,16 +575,22 @@ code {
 
   .sidebar {
     position: static;
-    display: flex;
-    gap: 0.35rem;
-    overflow-x: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.4rem;
     padding: 0.65rem;
-    scrollbar-width: thin;
   }
 
   .sidebar a {
-    flex: 0 0 auto;
-    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    min-height: 2.35rem;
+    white-space: normal;
+  }
+
+  .sidebar a:first-child {
+    grid-column: 1 / -1;
+    justify-content: center;
   }
 
   .page-hero {
