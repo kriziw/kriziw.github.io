@@ -477,6 +477,7 @@ code {
 }
 
 .doc-panel {
+  overflow-x: auto;
   padding: clamp(1rem, 2vw, 1.45rem);
 }
 
@@ -531,6 +532,16 @@ code {
 
   .sidebar {
     position: static;
+    display: flex;
+    gap: 0.35rem;
+    overflow-x: auto;
+    padding: 0.65rem;
+    scrollbar-width: thin;
+  }
+
+  .sidebar a {
+    flex: 0 0 auto;
+    white-space: nowrap;
   }
 
   .page-hero {

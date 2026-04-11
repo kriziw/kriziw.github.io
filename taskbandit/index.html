@@ -13,41 +13,37 @@
       <h1>Self-hosted chore management.</h1>
       <p>Run the API server, browser/PWA client, admin UI, and native Android app for playful household task management.</p>
     </header>
-    <main class="shell feature-grid" aria-label="TaskBandit documentation">
-      <a class="card" href="./quick-start.html">
-        <span>Start</span>
-        <h2>Quick Start</h2>
-        <p>Bring up PostgreSQL, the API server, and the shared web container.</p>
-      </a>
-      <a class="card" href="./deployment.html">
-        <span>Deploy</span>
-        <h2>Deployment</h2>
-        <p>Understand the two-container runtime model and upgrade order.</p>
-      </a>
-      <a class="card" href="./reverse-proxy.html">
-        <span>Proxy</span>
-        <h2>Reverse Proxy</h2>
-        <p>Configure HTTPS, CORS, forwarded headers, and WebSocket forwarding.</p>
-      </a>
-      <a class="card" href="./clients.html">
-        <span>Use</span>
-        <h2>Clients</h2>
-        <p>Compare the admin UI, browser/PWA client, and native Android app.</p>
-      </a>
-      <a class="card" href="./configuration.html">
-        <span>Operate</span>
-        <h2>Configuration</h2>
-        <p>Review environment variables, provider settings, and migration paths.</p>
-      </a>
-      <a class="card" href="./releases.html">
-        <span>Ship</span>
-        <h2>Releases</h2>
-        <p>See how release automation, APKs, and Docker images fit together.</p>
-      </a>
+    <main class="shell doc-layout">
+      <aside class="sidebar" aria-label="TaskBandit documentation navigation">
+        <a href="../index.html">All projects</a>
+        <a aria-current="page" href="./index.html">Overview</a>
+        <a href="./quick-start.html">Quick Start</a>
+        <a href="./deployment.html">Deployment</a>
+        <a href="./reverse-proxy.html">Reverse Proxy</a>
+        <a href="./clients.html">Clients</a>
+        <a href="./configuration.html">Configuration</a>
+        <a href="./releases.html">Releases</a>
+        <a href="./development.html">Development</a>
+      </aside>
+      <div>
+        <section class="doc-panel">
+          <h2>What it does</h2>
+          <p>TaskBandit is a self-hosted household task manager with chore assignment, approvals, recurring work, follow-up tasks, proof photos, live updates, and both browser/PWA and native Android clients.</p>
+        </section>
+        <section class="doc-panel">
+          <h2>Core areas</h2>
+          <ul>
+            <li><a href="./quick-start.html">Quick Start</a> covers the fastest path to a running local stack.</li>
+            <li><a href="./deployment.html">Deployment</a> explains the server and web container split.</li>
+            <li><a href="./reverse-proxy.html">Reverse Proxy</a> covers HTTPS, CORS, headers, and WebSockets.</li>
+            <li><a href="./clients.html">Clients</a> compares the admin UI, browser/PWA client, and Android app.</li>
+          </ul>
+        </section>
+        <section class="doc-panel">
+          <h2>Start here</h2>
+          <p>For a new install, begin with the <a href="./quick-start.html">quick start</a>, then review <a href="./configuration.html">configuration</a> and <a href="./reverse-proxy.html">reverse proxy setup</a> before exposing the app publicly.</p>
+        </section>
+      </div>
     </main>
-    <footer class="shell footer">
-      <a href="../index.html">All projects</a>
-      <a href="https://github.com/kriziw/TaskBandit">TaskBandit on GitHub</a>
-    </footer>
   </body>
 </html>
