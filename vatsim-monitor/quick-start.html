@@ -32,6 +32,24 @@ docker compose pull
 docker compose up -d</code></pre>
         </section>
         <section class="doc-panel">
+          <h2>Before first real start</h2>
+          <p>Edit <code>.env</code> before treating the install as real.</p>
+          <ul>
+            <li>Change <code>MYSQL_ROOT_PASSWORD</code> and <code>MYSQL_PASSWORD</code>.</li>
+            <li>Optionally set <code>TZ</code>, <code>WEB_PORT</code>, <code>SERVER_PORT</code>, and <code>APP_VERSION</code>.</li>
+            <li>Docker creates named volumes for MariaDB data and server logs: <code>mariadb_data</code> and <code>server_logs</code>.</li>
+          </ul>
+        </section>
+        <section class="doc-panel">
+          <h2>Domain or reverse proxy</h2>
+          <p>If users will open the web UI through a domain, set the public origin and forwarded-header variables in <code>.env</code>.</p>
+          <pre><code>ORIGIN=https://monitor.example.com
+PROTOCOL_HEADER=x-forwarded-proto
+HOST_HEADER=x-forwarded-host
+PORT_HEADER=x-forwarded-port</code></pre>
+          <p><code>ORIGIN</code> must exactly match the browser URL, otherwise SvelteKit may reject login or registration form posts.</p>
+        </section>
+        <section class="doc-panel">
           <h2>First checks</h2>
           <ul>
             <li>Web UI defaults to <code>http://localhost:3000</code>.</li>

@@ -316,7 +316,7 @@ code {
 
 .project-card--mindbuzz {
   background:
-    linear-gradient(160deg, rgba(26, 20, 11, 0.88), rgba(26, 20, 11, 0.16) 42%, transparent),
+    linear-gradient(150deg, rgba(26, 20, 11, 0.72) 0%, rgba(26, 20, 11, 0.18) 34%, transparent 64%),
     linear-gradient(135deg, #fff4df 0%, #ffbe49 100%);
   color: #fff9ed;
 }
@@ -575,16 +575,22 @@ code {
 
   .sidebar {
     position: static;
-    display: flex;
-    gap: 0.35rem;
-    overflow-x: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.4rem;
     padding: 0.65rem;
-    scrollbar-width: thin;
   }
 
   .sidebar a {
-    flex: 0 0 auto;
-    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    min-height: 2.35rem;
+    white-space: normal;
+  }
+
+  .sidebar a:first-child {
+    grid-column: 1 / -1;
+    justify-content: center;
   }
 
   .page-hero {

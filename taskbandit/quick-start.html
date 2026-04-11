@@ -28,12 +28,32 @@
       <div>
         <section class="doc-panel">
           <h2>Fastest setup</h2>
-          <p>Download the Compose file and example environment, then start the stack.</p>
+          <p>Download the Compose file and example environment, create the persistent folders, then start the stack.</p>
           <pre><code>mkdir -p taskbandit
 cd taskbandit
 wget -O docker-compose.yml https://raw.githubusercontent.com/kriziw/TaskBandit/main/docker-compose.yml
 wget -O .env https://raw.githubusercontent.com/kriziw/TaskBandit/main/.env.example
+mkdir -p data/postgres data/taskbandit
 docker compose up -d</code></pre>
+        </section>
+        <section class="doc-panel">
+          <h2>Before first real start</h2>
+          <p>For anything beyond a localhost test, edit <code>.env</code> before the first start.</p>
+          <ul>
+            <li>Change <code>TASKBANDIT_DB_PASSWORD</code> and <code>TASKBANDIT_JWT_SECRET</code>.</li>
+            <li>Keep <code>TASKBANDIT_DATA_ROOT=./data</code> unless you intentionally want another persistent storage path.</li>
+            <li>Set <code>TASKBANDIT_BOOTSTRAP_SEED_DEMO_DATA=false</code> if you do not want demo accounts.</li>
+          </ul>
+        </section>
+        <section class="doc-panel">
+          <h2>Domain or reverse proxy</h2>
+          <p>If users will open TaskBandit through a domain instead of localhost, set the public browser URLs and CORS origin in <code>.env</code>.</p>
+          <pre><code>TASKBANDIT_PUBLIC_CLIENT_BASE_URL=https://taskbandit.example.com
+TASKBANDIT_PUBLIC_ADMIN_BASE_URL=https://taskbandit.example.com/admin
+TASKBANDIT_PUBLIC_API_BASE_URL=https://api.taskbandit.example.com
+TASKBANDIT_CORS_ALLOWED_ORIGINS=https://taskbandit.example.com
+TASKBANDIT_REVERSE_PROXY_ENABLED=true</code></pre>
+          <p>Route the web container to <code>taskbandit-web:80</code> and the API container to <code>taskbandit-server:8080</code>. See <a href="./reverse-proxy.html">Reverse Proxy</a> for headers and examples.</p>
         </section>
         <section class="doc-panel">
           <h2>Open the UIs</h2>
