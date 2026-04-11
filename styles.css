@@ -274,6 +274,11 @@ code {
   max-height: 4.2rem;
 }
 
+.project-card__logo--docs {
+  width: min(9.6rem, 82%);
+  max-height: 7.8rem;
+}
+
 .project-card:hover {
   transform: translateY(-6px);
   box-shadow:
@@ -427,6 +432,11 @@ code {
   max-height: 3.7rem;
 }
 
+.project-logo--docs {
+  width: min(11rem, 28vw);
+  max-height: 7.8rem;
+}
+
 .page-hero .eyebrow {
   margin: 0;
 }
@@ -574,6 +584,11 @@ code {
     max-height: 3.4rem;
   }
 
+  .project-card__logo--docs {
+    width: min(8.4rem, 76%);
+    max-height: 6.8rem;
+  }
+
   .project-card h2 {
     font-size: clamp(1.8rem, 10vw, 2.6rem);
   }
@@ -613,6 +628,10 @@ code {
 
   .project-logo--wide {
     width: min(13rem, 80%);
+  }
+
+  .project-logo--docs {
+    width: min(9.5rem, 76%);
   }
 }
 
