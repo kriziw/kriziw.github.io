@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reverse Proxy | TaskBandit Docs</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="shell page-hero">
+      <img class="project-logo project-logo--wide" src="../assets/taskbandit-logo.svg" alt="TaskBandit logo" />
+      <p class="eyebrow">Reverse Proxy</p>
+      <h1>Put TaskBandit behind HTTPS safely.</h1>
+      <p>Use a reverse proxy for TLS, public hostnames, and routing while keeping the server and web containers simple.</p>
+    </header>
+    <main class="shell doc-layout">
+      <aside class="sidebar" aria-label="Documentation navigation">
+        <a href="./quick-start.html">Quick Start</a>
+        <a href="./deployment.html">Deployment</a>
+        <a aria-current="page" href="./reverse-proxy.html">Reverse Proxy</a>
+        <a href="./clients.html">Clients</a>
+        <a href="./configuration.html">Configuration</a>
+        <a href="./releases.html">Releases</a>
+        <a href="./development.html">Development</a>
+      </aside>
+      <div>
+        <section class="doc-panel">
+          <h2>Recommended shape</h2>
+          <p>Run two TaskBandit containers behind your proxy:</p>
+          <ul>
+            <li><code>taskbandit-server:8080</code> for API, auth, realtime sync, uploads, health, and notification delivery.</li>
+            <li><code>taskbandit-web:80</code> for the client UI/PWA at <code>/</code> and the admin UI at <code>/admin</code>.</li>
+          </ul>
+          <p>Use HTTPS at the proxy. The containers do not need to terminate TLS themselves.</p>
+        </section>
+
+        <section class="doc-panel">
+          <h2>Important .env values</h2>
+          <p>For a normal dedicated web origin plus a separate API origin, use values like these:</p>
+          <pre><code>TASKBANDIT_PUBLIC_CLIENT_BASE_URL=https://taskbandit.example.com
+TASKBANDIT_PUBLIC_ADMIN_BASE_URL=https://taskbandit.example.com/admin
+TASKBANDIT_PUBLIC_API_BASE_URL=https://api.taskbandit.example.com
+TASKBANDIT_CORS_ALLOWED_ORIGINS=https://taskbandit.example.com
+TASKBANDIT_SERVE_EMBEDDED_WEB=false
+TASKBANDIT_REVERSE_PROXY_ENABLED=true
+TASKBANDIT_REVERSE_PROXY_PATH_BASE=</code></pre>
+          <p>Only set <code>TASKBANDIT_REVERSE_PROXY_PATH_BASE</code> if you intentionally mount the API under a subpath. For most domain-based setups, leave it blank.</p>
+        </section>
+
+        <section class="doc-panel">
+          <h2>Headers to preserve</h2>
+          <p>The server needs the original browser-facing host and scheme so auth callbacks, generated URLs, and secure-cookie decisions stay correct.</p>
+          <ul>
+            <li><code>Host</code></li>
+            <li><code>X-Forwarded-Host</code></li>
+            <li><code>X-Forwarded-Proto</code></li>
+            <li><code>X-Forwarded-For</code></li>
+            <li><code>Upgrade</code> and <code>Connection</code> for live sync/WebSocket-style traffic.</li>
+          </ul>
+        </section>
+
+        <section class="doc-panel">
+          <h2>Nginx example</h2>
+          <pre><code>map $http_upgrade $connection_upgrade {
+    default upgrade;
+    '' close;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name api.taskbandit.example.com;
+
+    location / {
+        proxy_pass http://taskbandit-server:8080;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+    }
+}
+
+server {
+    listen 443 ssl http2;
+    server_name taskbandit.example.com;
+
+    location / {
+        proxy_pass http://taskbandit-web:80;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}</code></pre>
+        </section>
+
+        <section class="doc-panel">
+          <h2>Traefik labels example</h2>
+          <pre><code>services:
+  server:
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.taskbandit-api.rule=Host(`api.taskbandit.example.com`)
+      - traefik.http.routers.taskbandit-api.entrypoints=websecure
+      - traefik.http.routers.taskbandit-api.tls=true
+      - traefik.http.services.taskbandit-api.loadbalancer.server.port=8080
+
+  web:
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.taskbandit-web.rule=Host(`taskbandit.example.com`)
+      - traefik.http.routers.taskbandit-web.entrypoints=websecure
+      - traefik.http.routers.taskbandit-web.tls=true
+      - traefik.http.services.taskbandit-web.loadbalancer.server.port=80</code></pre>
+        </section>
+
+        <section class="doc-panel">
+          <h2>Subpath hosting notes</h2>
+          <p>Prefer dedicated hostnames when possible. If you must mount the API under a subpath, set <code>TASKBANDIT_REVERSE_PROXY_PATH_BASE</code> to that subpath and keep <code>/health</code> routed separately or use Docker health checks instead.</p>
+          <pre><code>TASKBANDIT_REVERSE_PROXY_ENABLED=true
+TASKBANDIT_REVERSE_PROXY_PATH_BASE=/taskbandit</code></pre>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

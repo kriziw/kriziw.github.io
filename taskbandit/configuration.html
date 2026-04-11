@@ -8,6 +8,7 @@
   </head>
   <body>
     <header class="shell page-hero">
+      <img class="project-logo project-logo--wide" src="../assets/taskbandit-logo.svg" alt="TaskBandit logo" />
       <p class="eyebrow">Configuration</p>
       <h1>Environment settings that matter.</h1>
       <p>Most installs can start from <code>.env.example</code> and change only the public URLs, secrets, data paths, and optional providers.</p>
@@ -16,6 +17,7 @@
       <aside class="sidebar" aria-label="Documentation navigation">
         <a href="./quick-start.html">Quick Start</a>
         <a href="./deployment.html">Deployment</a>
+        <a href="./reverse-proxy.html">Reverse Proxy</a>
         <a href="./clients.html">Clients</a>
         <a aria-current="page" href="./configuration.html">Configuration</a>
         <a href="./releases.html">Releases</a>
@@ -54,6 +56,32 @@
             <li>SMTP is configured from the admin UI and powers password reset plus notification fallback.</li>
             <li>Android FCM is optional and controlled by <code>TASKBANDIT_FCM_*</code> values.</li>
             <li>Browser Web Push is optional and controlled by <code>TASKBANDIT_WEB_PUSH_PUBLIC_KEY</code>, <code>TASKBANDIT_WEB_PUSH_PRIVATE_KEY</code>, and <code>TASKBANDIT_WEB_PUSH_SUBJECT</code>.</li>
+          </ul>
+        </section>
+        <section class="doc-panel">
+          <h2>Notification worker timing</h2>
+          <ul>
+            <li><code>TASKBANDIT_REMINDER_INTERVAL_MS</code> controls due-soon and overdue reminder scans. Set it to <code>0</code> to disable the worker.</li>
+            <li><code>TASKBANDIT_DUE_SOON_WINDOW_HOURS</code> controls how far ahead due-soon reminders are generated.</li>
+            <li><code>TASKBANDIT_DAILY_SUMMARY_HOUR_UTC</code> controls the daily summary notification hour.</li>
+            <li><code>TASKBANDIT_PUSH_DELIVERY_INTERVAL_MS</code> controls queued push delivery processing.</li>
+            <li><code>TASKBANDIT_EMAIL_DELIVERY_INTERVAL_MS</code> controls notification email fallback delivery while keeping SMTP available for password reset and invites.</li>
+          </ul>
+        </section>
+        <section class="doc-panel">
+          <h2>Backup and migration paths</h2>
+          <ul>
+            <li><code>TASKBANDIT_STORAGE_ROOT</code> is the server-side upload storage path inside the container.</li>
+            <li><code>TASKBANDIT_DATA_ROOT_HINT</code>, <code>TASKBANDIT_COMPOSE_FILE_HINT</code>, and <code>TASKBANDIT_ENV_FILE_HINT</code> feed the admin backup-readiness panel.</li>
+            <li>PostgreSQL data is stored below <code>${TASKBANDIT_DATA_ROOT}/postgres</code>, and app-managed files are stored below <code>${TASKBANDIT_DATA_ROOT}/taskbandit</code>.</li>
+          </ul>
+        </section>
+        <section class="doc-panel">
+          <h2>Auth precedence</h2>
+          <ul>
+            <li>Local auth follows the household UI setting unless <code>TASKBANDIT_FORCE_LOCAL_AUTH_ENABLED=true</code>, which keeps local sign-in available as a recovery path.</li>
+            <li>OIDC prefers the household UI configuration when it is enabled and complete.</li>
+            <li>If UI-managed OIDC is off or incomplete, the server can fall back to environment-based <code>TASKBANDIT_OIDC_*</code> configuration.</li>
           </ul>
         </section>
       </div>

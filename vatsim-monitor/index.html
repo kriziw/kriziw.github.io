@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VATSIM Monitor | kriziw Docs</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="project-vatsim">
+    <header class="shell page-hero">
+      <img class="project-logo" src="../assets/vatsim-monitor-logo.svg" alt="VATSIM Monitor logo" />
+      <p class="eyebrow">VATSIM Monitor</p>
+      <h1>Controller availability monitoring.</h1>
+      <p>Track watched VATSIM controller positions, keep a live monitor open, and send Discord alerts when staffing changes.</p>
+    </header>
+    <main class="shell doc-layout">
+      <aside class="sidebar" aria-label="VATSIM Monitor documentation navigation">
+        <a aria-current="page" href="./index.html">Overview</a>
+        <a href="./quick-start.html">Quick Start</a>
+        <a href="./deployment.html">Deployment</a>
+        <a href="./configuration.html">Configuration</a>
+        <a href="./development.html">Development</a>
+      </aside>
+      <div>
+        <section class="doc-panel">
+          <h2>What it does</h2>
+          <p>VATSIM Monitor is a self-hosted platform for tracking controller availability on the VATSIM network. It is designed for users who want local accounts, watched positions, live status, and notifications without requiring VATSIM OAuth.</p>
+        </section>
+        <section class="doc-panel">
+          <h2>Core features</h2>
+          <ul>
+            <li>Live polling of VATSIM controller data.</li>
+            <li>Watch-rule monitoring for specific positions or wildcard patterns.</li>
+            <li>Optional top-down matching for broader position coverage.</li>
+            <li>Discord webhook notifications with per-event customization.</li>
+            <li>Local multi-user accounts, rotating server logs, and a signed-in troubleshooting logs page.</li>
+          </ul>
+        </section>
+        <section class="doc-panel">
+          <h2>Typical flow</h2>
+          <ol>
+            <li>Create a local account.</li>
+            <li>Add watch rules such as <code>EGLL_TWR</code> or <code>EGNX_%</code>.</li>
+            <li>Connect one or more Discord webhook channels.</li>
+            <li>Customize online, offline, and controller-change templates if needed.</li>
+            <li>Use the monitor UI and receive alerts as staffing changes occur.</li>
+          </ol>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

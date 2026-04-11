@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VATSIM Monitor Deployment | kriziw Docs</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="project-vatsim">
+    <header class="shell page-hero">
+      <img class="project-logo" src="../assets/vatsim-monitor-logo.svg" alt="VATSIM Monitor logo" />
+      <p class="eyebrow">VATSIM Monitor Deployment</p>
+      <h1>Three services for monitoring.</h1>
+      <p>The default Docker stack runs MariaDB, a backend server, and a SvelteKit web UI.</p>
+    </header>
+    <main class="shell doc-layout">
+      <aside class="sidebar" aria-label="VATSIM Monitor documentation navigation">
+        <a href="./index.html">Overview</a>
+        <a href="./quick-start.html">Quick Start</a>
+        <a aria-current="page" href="./deployment.html">Deployment</a>
+        <a href="./configuration.html">Configuration</a>
+        <a href="./development.html">Development</a>
+      </aside>
+      <div>
+        <section class="doc-panel">
+          <h2>Services</h2>
+          <table>
+            <thead>
+              <tr><th>Service</th><th>Purpose</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>mariadb</code></td><td>Persistent relational data store.</td></tr>
+              <tr><td><code>server</code></td><td>Polling, auth, monitor routes, event persistence, Discord fan-out, and logs.</td></tr>
+              <tr><td><code>web</code></td><td>SvelteKit frontend for login, settings, monitor, alerts, and logs.</td></tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="doc-panel">
+          <h2>Published images</h2>
+          <ul>
+            <li><code>kriziw/vatsim-monitor-server</code></li>
+            <li><code>kriziw/vatsim-monitor-web</code></li>
+            <li><code>mariadb:11.8</code> by default, configurable with <code>MARIADB_VERSION</code>.</li>
+          </ul>
+        </section>
+        <section class="doc-panel">
+          <h2>Reverse proxy</h2>
+          <p>If the web app is behind a trusted reverse proxy, set <code>ORIGIN</code> to the exact public browser URL and configure forwarded-header env values so SvelteKit accepts login and registration form posts.</p>
+          <pre><code>ORIGIN=https://monitor.example.com
+PROTOCOL_HEADER=x-forwarded-proto
+HOST_HEADER=x-forwarded-host
+PORT_HEADER=x-forwarded-port</code></pre>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

@@ -3,90 +3,60 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>TaskBandit Docs</title>
+    <title>kriziw Project Docs</title>
     <meta
       name="description"
-      content="TaskBandit documentation for self-hosting, clients, configuration, and releases."
+      content="Documentation hub for kriziw projects including TaskBandit, MindBuzz, and VATSIM Monitor."
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
-    <header class="site-header">
+  <body class="hub-page">
+    <header class="site-header hub-header">
       <nav class="nav shell" aria-label="Main navigation">
-        <a class="brand" href="./index.html">TaskBandit Docs</a>
+        <a class="brand" href="./index.html">kriziw docs</a>
         <div class="nav-links">
-          <a href="./docs/quick-start.html">Quick Start</a>
-          <a href="./docs/deployment.html">Deployment</a>
-          <a href="./docs/clients.html">Clients</a>
-          <a href="./docs/configuration.html">Configuration</a>
-          <a href="https://github.com/kriziw/TaskBandit">GitHub</a>
+          <a href="./taskbandit/">TaskBandit</a>
+          <a href="./mindbuzz/">MindBuzz</a>
+          <a href="./vatsim-monitor/">VATSIM Monitor</a>
+          <a href="https://github.com/kriziw">GitHub</a>
         </div>
       </nav>
       <section class="hero shell">
-        <p class="eyebrow">Self-hosted household chore management</p>
-        <h1>Run TaskBandit with confidence.</h1>
+        <p class="eyebrow">Project documentation hub</p>
+        <h1>Choose the project you want to run.</h1>
         <p>
-          A practical guide for installing, configuring, operating, and updating the TaskBandit
-          server, web client, admin UI, native Android app, and browser PWA.
+          Central documentation for self-hosted tools and experiments: household chore management,
+          event quizzes, and VATSIM controller monitoring.
         </p>
-        <div class="actions">
-          <a class="button primary" href="./docs/quick-start.html">Start self-hosting</a>
-          <a class="button secondary" href="./docs/deployment.html">View deployment model</a>
-        </div>
       </section>
     </header>
 
     <main>
-      <section class="shell feature-grid" aria-label="Documentation areas">
-        <a class="card" href="./docs/quick-start.html">
-          <span>01</span>
-          <h2>Quick Start</h2>
-          <p>Bring up PostgreSQL, the API server, and the shared web container with Docker Compose.</p>
+      <section class="shell project-grid" aria-label="Project documentation areas">
+        <a class="project-card project-card--taskbandit" href="./taskbandit/">
+          <img class="project-card__logo project-card__logo--wide" src="./assets/taskbandit-logo.svg" alt="TaskBandit logo" />
+          <span>Households</span>
+          <h2>TaskBandit</h2>
+          <p>Self-hosted chores, approvals, streaks, web/PWA clients, and Android support.</p>
         </a>
-        <a class="card" href="./docs/deployment.html">
-          <span>02</span>
-          <h2>Deployment</h2>
-          <p>Understand the two-container production model, ports, reverse proxy routing, and upgrades.</p>
+        <a class="project-card project-card--mindbuzz" href="./mindbuzz/">
+          <img class="project-card__logo project-card__logo--wide" src="./assets/mindbuzz-logo.svg" alt="MindBuzz logo" />
+          <span>Quiz nights</span>
+          <h2>MindBuzz</h2>
+          <p>Self-hosted quiz sessions for classrooms, team sessions, events, and training.</p>
         </a>
-        <a class="card" href="./docs/clients.html">
-          <span>03</span>
-          <h2>Clients</h2>
-          <p>Compare the admin UI, browser/PWA client, and native Android app responsibilities.</p>
+        <a class="project-card project-card--vatsim" href="./vatsim-monitor/">
+          <img class="project-card__logo" src="./assets/vatsim-monitor-logo.svg" alt="VATSIM Monitor logo" />
+          <span>Aviation monitoring</span>
+          <h2>VATSIM Monitor</h2>
+          <p>Local-first monitoring for watched VATSIM controller positions and Discord alerts.</p>
         </a>
-        <a class="card" href="./docs/configuration.html">
-          <span>04</span>
-          <h2>Configuration</h2>
-          <p>Review the key environment variables for auth, data, push notifications, and storage.</p>
-        </a>
-        <a class="card" href="./docs/releases.html">
-          <span>05</span>
-          <h2>Releases</h2>
-          <p>See how release-please, Android APKs, and Docker image publishing fit together.</p>
-        </a>
-        <a class="card" href="./docs/development.html">
-          <span>06</span>
-          <h2>Development</h2>
-          <p>Set up the local API, split web entrypoints, and Android development environment.</p>
-        </a>
-      </section>
-
-      <section class="shell callout">
-        <div>
-          <p class="eyebrow">Current production shape</p>
-          <h2>Two containers, two web surfaces.</h2>
-          <p>
-            TaskBandit now runs the API in <code>taskbandit-server</code> and serves both web
-            experiences from <code>taskbandit-web</code>: the client UI/PWA at <code>/</code> and
-            the admin UI at <code>/admin</code>.
-          </p>
-        </div>
-        <a class="button secondary" href="./docs/deployment.html">Read deployment notes</a>
       </section>
     </main>
 
     <footer class="shell footer">
-      <span>TaskBandit documentation</span>
-      <a href="https://github.com/kriziw/TaskBandit/blob/main/LICENSE.md">AGPLv3</a>
+      <span>kriziw project documentation</span>
+      <a href="https://github.com/kriziw">GitHub profile</a>
     </footer>
   </body>
 </html>

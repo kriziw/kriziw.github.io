@@ -8,6 +8,7 @@
   </head>
   <body>
     <header class="shell page-hero">
+      <img class="project-logo project-logo--wide" src="../assets/taskbandit-logo.svg" alt="TaskBandit logo" />
       <p class="eyebrow">Clients</p>
       <h1>Admin, web client, and Android.</h1>
       <p>TaskBandit keeps operational setup separate from day-to-day chore work.</p>
@@ -16,6 +17,7 @@
       <aside class="sidebar" aria-label="Documentation navigation">
         <a href="./quick-start.html">Quick Start</a>
         <a href="./deployment.html">Deployment</a>
+        <a href="./reverse-proxy.html">Reverse Proxy</a>
         <a aria-current="page" href="./clients.html">Clients</a>
         <a href="./configuration.html">Configuration</a>
         <a href="./releases.html">Releases</a>
@@ -42,6 +44,19 @@
         <section class="doc-panel">
           <h2>Native Android app</h2>
           <p>The Android app remains supported while the browser/PWA client matures. It talks directly to the API server and supports mobile-first chore usage, offline queueing, proof photos, and the widget foundation.</p>
+        </section>
+        <section class="doc-panel">
+          <h2>Android push behavior</h2>
+          <p>Android push is optional and degrades cleanly.</p>
+          <ul>
+            <li>If the Android app is built without Firebase values, it still runs and registers as a generic notification device.</li>
+            <li>If the app is built with Firebase app settings, it initializes Firebase at runtime and registers an FCM token when available.</li>
+            <li>If the server is also configured with <code>TASKBANDIT_FCM_ENABLED=true</code> and a Firebase Admin service account, queued household notifications can be delivered as real Android push notifications.</li>
+          </ul>
+        </section>
+        <section class="doc-panel">
+          <h2>Notification priorities</h2>
+          <p>TaskBandit treats mobile/browser push as the primary notification path for household activity. SMTP-backed email is intended for account recovery, admin-style messages such as invites, and fallback delivery when no push-ready device is available.</p>
         </section>
       </div>
     </main>
