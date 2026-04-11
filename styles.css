@@ -275,8 +275,8 @@ code {
 }
 
 .project-card__logo--docs {
-  width: min(9.6rem, 82%);
-  max-height: 7.8rem;
+  width: min(16.25rem, 94%);
+  max-height: 5.5rem;
 }
 
 .project-card:hover {
@@ -433,8 +433,8 @@ code {
 }
 
 .project-logo--docs {
-  width: min(11rem, 28vw);
-  max-height: 7.8rem;
+  width: min(17rem, 40vw);
+  max-height: 5.7rem;
 }
 
 .page-hero .eyebrow {
@@ -585,8 +585,8 @@ code {
   }
 
   .project-card__logo--docs {
-    width: min(8.4rem, 76%);
-    max-height: 6.8rem;
+    width: min(15rem, 88%);
+    max-height: 5rem;
   }
 
   .project-card h2 {
@@ -631,7 +631,8 @@ code {
   }
 
   .project-logo--docs {
-    width: min(9.5rem, 76%);
+    width: min(15.5rem, 86%);
+    max-height: 5.2rem;
   }
 }
 
