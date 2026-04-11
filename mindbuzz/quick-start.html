@@ -27,8 +27,23 @@
           <h2>Docker Compose</h2>
           <pre><code>git clone https://github.com/kriziw/MindBuzz.git
 cd MindBuzz
+mkdir -p config media
+docker compose -f compose.yml pull
 docker compose -f compose.yml up -d</code></pre>
           <p>The app is available at <code>http://localhost:3000</code>.</p>
+        </section>
+        <section class="doc-panel">
+          <h2>Persistent folders</h2>
+          <p>The Compose file bind-mounts two folders from the checkout. Create and back them up before treating the install as real.</p>
+          <ul>
+            <li><code>config/</code> stores <code>history.db</code>, legacy quiz imports, and <code>auth.json</code> for SSO settings.</li>
+            <li><code>media/</code> stores manager-uploaded local audio files.</li>
+          </ul>
+        </section>
+        <section class="doc-panel">
+          <h2>Domain or reverse proxy</h2>
+          <p>MindBuzz normally uses same-origin browser requests, so there is no public base URL variable for a standard reverse-proxy install. Point your HTTPS host at container port <code>3000</code> and preserve <code>Host</code>, <code>X-Forwarded-Proto</code>, and WebSocket <code>Upgrade</code>/<code>Connection</code> headers.</p>
+          <p>If you enable SSO, configure the identity provider callback to match the public URL users open, for example <code>https://quiz.example.com/auth/oidc/callback</code>.</p>
         </section>
         <section class="doc-panel">
           <h2>First run</h2>
