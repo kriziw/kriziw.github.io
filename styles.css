@@ -30,6 +30,57 @@ body {
     linear-gradient(135deg, #fbf4e7 0%, #ecdcc1 55%, #d8c6a9 100%);
 }
 
+body.project-mindbuzz {
+  --ink: #261808;
+  --muted: #6c5438;
+  --paper: #fff3dc;
+  --paper-strong: #fff9ed;
+  --sand: #ffd899;
+  --clay: #ff9900;
+  --moss: #14100a;
+  --night: #1a140b;
+  --line: rgba(80, 48, 8, 0.18);
+  --shadow: 0 24px 60px rgba(255, 153, 0, 0.18);
+  background:
+    radial-gradient(circle at 14% 8%, rgba(255, 153, 0, 0.35), transparent 20rem),
+    radial-gradient(circle at 88% 18%, rgba(26, 20, 11, 0.16), transparent 18rem),
+    linear-gradient(135deg, #fff7e8 0%, #ffe0a6 56%, #ffb032 100%);
+}
+
+body.project-vatsim {
+  --ink: #12253a;
+  --muted: #587088;
+  --paper: #e8eff6;
+  --paper-strong: #ffffff;
+  --sand: #d7e5f3;
+  --clay: #d79f1b;
+  --moss: #0f6f7a;
+  --night: #0c2746;
+  --line: rgba(12, 39, 70, 0.14);
+  --shadow: 0 24px 60px rgba(12, 39, 70, 0.14);
+  background:
+    radial-gradient(circle at top left, rgba(84, 194, 255, 0.22), transparent 28rem),
+    radial-gradient(circle at top right, rgba(255, 209, 102, 0.2), transparent 24rem),
+    linear-gradient(180deg, #f3f8fd 0%, #eaf1f7 46%, #e2eaf3 100%);
+}
+
+body.hub-page {
+  --ink: #182137;
+  --muted: #667085;
+  --paper: #eef2f7;
+  --paper-strong: #ffffff;
+  --sand: #dce5ef;
+  --clay: #3366ff;
+  --moss: #0f766e;
+  --night: #151a2d;
+  --line: rgba(36, 48, 67, 0.14);
+  --shadow: 0 24px 70px rgba(21, 26, 45, 0.16);
+  background:
+    radial-gradient(circle at top left, rgba(51, 102, 255, 0.18), transparent 28rem),
+    radial-gradient(circle at top right, rgba(15, 118, 110, 0.16), transparent 26rem),
+    linear-gradient(135deg, #f8fbff 0%, #e8edf6 55%, #d6e1ed 100%);
+}
+
 a {
   color: inherit;
 }
@@ -161,6 +212,115 @@ code {
   padding-bottom: 4rem;
 }
 
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  padding-bottom: 4rem;
+}
+
+.project-card {
+  min-height: 24rem;
+  display: grid;
+  align-content: space-between;
+  border: 1px solid var(--line);
+  border-radius: 1.6rem;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  position: relative;
+  isolation: isolate;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.project-card__logo {
+  width: 5.2rem;
+  max-height: 5.2rem;
+  object-fit: contain;
+  justify-self: start;
+  filter: drop-shadow(0 16px 26px rgba(21, 26, 45, 0.18));
+}
+
+.project-card__logo--wide {
+  width: min(15rem, 86%);
+  max-height: 4.8rem;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 34px 80px rgba(21, 26, 45, 0.2);
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: auto -4rem -5rem auto;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 999px;
+  z-index: -1;
+}
+
+.project-card span {
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.project-card h2 {
+  margin: 0.5rem 0;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.07em;
+}
+
+.project-card p {
+  max-width: 28rem;
+  color: rgba(24, 33, 55, 0.72);
+  line-height: 1.6;
+}
+
+.project-card--taskbandit {
+  background: linear-gradient(135deg, #fff8ec 0%, #e7d3ad 100%);
+}
+
+.project-card--taskbandit::before {
+  background: rgba(99, 112, 82, 0.22);
+}
+
+.project-card--mindbuzz {
+  background:
+    linear-gradient(160deg, rgba(26, 20, 11, 0.88), rgba(26, 20, 11, 0.16) 42%, transparent),
+    linear-gradient(135deg, #fff4df 0%, #ffbe49 100%);
+  color: #fff9ed;
+}
+
+.project-card--mindbuzz p {
+  color: rgba(255, 249, 237, 0.82);
+}
+
+.project-card--mindbuzz::before {
+  background: rgba(255, 153, 0, 0.45);
+}
+
+.project-card--vatsim {
+  background:
+    radial-gradient(circle at 70% 20%, rgba(84, 194, 255, 0.3), transparent 14rem),
+    linear-gradient(135deg, #f4f9fe 0%, #d9e8f6 48%, #b9d3ec 100%);
+}
+
+.project-card--vatsim::before {
+  border: 1px solid rgba(84, 194, 255, 0.28);
+  box-shadow:
+    0 0 0 1.6rem rgba(84, 194, 255, 0.08),
+    0 0 0 3.2rem rgba(84, 194, 255, 0.04);
+}
+
 .card,
 .callout,
 .doc-panel {
@@ -225,6 +385,19 @@ code {
 
 .page-hero {
   padding: 3rem 0;
+}
+
+.project-logo {
+  width: 5rem;
+  max-height: 5rem;
+  object-fit: contain;
+  margin-bottom: 1.2rem;
+  filter: drop-shadow(0 16px 26px rgba(21, 26, 45, 0.16));
+}
+
+.project-logo--wide {
+  width: min(18rem, 80%);
+  max-height: 5.5rem;
 }
 
 .doc-layout {
@@ -307,6 +480,7 @@ code {
   }
 
   .feature-grid,
+  .project-grid,
   .doc-layout {
     grid-template-columns: 1fr;
   }

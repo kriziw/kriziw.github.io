@@ -8,6 +8,7 @@
   </head>
   <body>
     <header class="shell page-hero">
+      <img class="project-logo project-logo--wide" src="../assets/taskbandit-logo.svg" alt="TaskBandit logo" />
       <p class="eyebrow">Deployment</p>
       <h1>Two containers, clear boundaries.</h1>
       <p>The server handles API/auth/realtime work. The web container serves both browser surfaces.</p>
@@ -16,6 +17,7 @@
       <aside class="sidebar" aria-label="Documentation navigation">
         <a href="./quick-start.html">Quick Start</a>
         <a aria-current="page" href="./deployment.html">Deployment</a>
+        <a href="./reverse-proxy.html">Reverse Proxy</a>
         <a href="./clients.html">Clients</a>
         <a href="./configuration.html">Configuration</a>
         <a href="./releases.html">Releases</a>
@@ -44,11 +46,20 @@
         </section>
         <section class="doc-panel">
           <h2>Reverse proxy</h2>
-          <p>Terminate TLS at your proxy. Route API traffic to <code>taskbandit-server:8080</code> and web traffic to <code>taskbandit-web:80</code>. Set <code>TASKBANDIT_CORS_ALLOWED_ORIGINS</code> to the exact browser origin that should call the API.</p>
+          <p>Terminate TLS at your proxy. Route API traffic to <code>taskbandit-server:8080</code> and web traffic to <code>taskbandit-web:80</code>. See the dedicated <a href="./reverse-proxy.html">reverse proxy guide</a> for required headers, CORS values, and WebSocket forwarding.</p>
         </section>
         <section class="doc-panel">
           <h2>Upgrade order</h2>
           <p>Update the server and web containers together from the same <code>TASKBANDIT_IMAGE_TAG</code>. Then update native Android clients after the newer server is running.</p>
+        </section>
+        <section class="doc-panel">
+          <h2>Published images</h2>
+          <p>Docker Compose pulls two images from Docker Hub:</p>
+          <ul>
+            <li><code>kriziw/taskbandit</code> for the API server.</li>
+            <li><code>kriziw/taskbandit-web</code> for the shared web UI container.</li>
+          </ul>
+          <p>Pin <code>TASKBANDIT_IMAGE_TAG</code> if you want to avoid moving with <code>latest</code>.</p>
         </section>
       </div>
     </main>

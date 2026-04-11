@@ -8,6 +8,7 @@
   </head>
   <body>
     <header class="shell page-hero">
+      <img class="project-logo project-logo--wide" src="../assets/taskbandit-logo.svg" alt="TaskBandit logo" />
       <p class="eyebrow">Releases</p>
       <h1>Release automation and artifacts.</h1>
       <p>TaskBandit uses release-please to prepare releases, publish Docker images, and attach Android APK artifacts.</p>
@@ -16,6 +17,7 @@
       <aside class="sidebar" aria-label="Documentation navigation">
         <a href="./quick-start.html">Quick Start</a>
         <a href="./deployment.html">Deployment</a>
+        <a href="./reverse-proxy.html">Reverse Proxy</a>
         <a href="./clients.html">Clients</a>
         <a href="./configuration.html">Configuration</a>
         <a aria-current="page" href="./releases.html">Releases</a>
@@ -39,6 +41,24 @@
             <li><code>PRE_RELEASE_SETTING</code> controls prerelease mode.</li>
             <li><code>RELEASE_PLEASE_TOKEN</code> is recommended so release automation can create PRs, tags, and releases reliably.</li>
             <li><code>DOCKERHUB_USERNAME</code> and <code>DOCKERHUB_TOKEN</code> are required for image publishing.</li>
+          </ul>
+        </section>
+        <section class="doc-panel">
+          <h2>Android release signing</h2>
+          <p>The release workflow builds an Android APK. If signing secrets are not configured, it still builds and uploads an artifact, but it does not attach an unsigned package to the GitHub release.</p>
+          <ul>
+            <li><code>ANDROID_KEYSTORE_BASE64</code></li>
+            <li><code>ANDROID_KEYSTORE_PASSWORD</code></li>
+            <li><code>ANDROID_KEY_ALIAS</code></li>
+            <li><code>ANDROID_KEY_PASSWORD</code></li>
+          </ul>
+        </section>
+        <section class="doc-panel">
+          <h2>Release flow</h2>
+          <ul>
+            <li>Use conventional PR titles such as <code>feat: ...</code>, <code>fix: ...</code>, or <code>chore: ...</code>.</li>
+            <li>Merging a release-please PR creates the GitHub release, tags it, attaches the Android APK when appropriate, and publishes Docker images.</li>
+            <li>The manual Android release workflow remains available for ad-hoc validation or rebuilds without creating a new release.</li>
           </ul>
         </section>
       </div>

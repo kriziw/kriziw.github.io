@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MindBuzz Deployment | kriziw Docs</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="project-mindbuzz">
+    <header class="shell page-hero">
+      <img class="project-logo project-logo--wide" src="../assets/mindbuzz-logo.svg" alt="MindBuzz logo" />
+      <p class="eyebrow">MindBuzz Deployment</p>
+      <h1>One app container, persistent folders.</h1>
+      <p>The default Compose file uses the published Docker image and bind mounts config plus media.</p>
+    </header>
+    <main class="shell doc-layout">
+      <aside class="sidebar" aria-label="MindBuzz documentation navigation">
+        <a href="./index.html">Overview</a>
+        <a href="./quick-start.html">Quick Start</a>
+        <a aria-current="page" href="./deployment.html">Deployment</a>
+        <a href="./configuration.html">Configuration</a>
+        <a href="./releases.html">Releases</a>
+      </aside>
+      <div>
+        <section class="doc-panel">
+          <h2>Docker image</h2>
+          <p>The published image is <code>kriziw/mindbuzz:latest</code>.</p>
+          <pre><code>docker run -d \
+  -p 3000:3000 \
+  -v ./config:/app/config \
+  -v ./media:/app/media \
+  kriziw/mindbuzz:latest</code></pre>
+        </section>
+        <section class="doc-panel">
+          <h2>Persistent data</h2>
+          <ul>
+            <li><code>./config:/app/config</code> stores the SQLite application database and file-backed auth settings.</li>
+            <li><code>./media:/app/media</code> stores manager-uploaded local audio files.</li>
+          </ul>
+        </section>
+        <section class="doc-panel">
+          <h2>Upgrade habit</h2>
+          <p>Back up <code>config/</code> and <code>media/</code>, pull the new image tag, then restart the container. Existing installs are migrated automatically on first startup after an upgrade.</p>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

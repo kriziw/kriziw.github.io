@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MindBuzz Releases | kriziw Docs</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="project-mindbuzz">
+    <header class="shell page-hero">
+      <img class="project-logo project-logo--wide" src="../assets/mindbuzz-logo.svg" alt="MindBuzz logo" />
+      <p class="eyebrow">MindBuzz Releases</p>
+      <h1>Release Please and Docker Hub.</h1>
+      <p>MindBuzz uses conventional PR titles, release-please, GitHub releases, and Docker image publishing.</p>
+    </header>
+    <main class="shell doc-layout">
+      <aside class="sidebar" aria-label="MindBuzz documentation navigation">
+        <a href="./index.html">Overview</a>
+        <a href="./quick-start.html">Quick Start</a>
+        <a href="./deployment.html">Deployment</a>
+        <a href="./configuration.html">Configuration</a>
+        <a aria-current="page" href="./releases.html">Releases</a>
+      </aside>
+      <div>
+        <section class="doc-panel">
+          <h2>Release flow</h2>
+          <ul>
+            <li>PR titles should follow Conventional Commits, such as <code>feat:</code>, <code>fix:</code>, or <code>feat!:</code>.</li>
+            <li>Release Please keeps the next release PR and changelog up to date.</li>
+            <li>Merging the release PR creates the GitHub release and triggers Docker publishing.</li>
+          </ul>
+        </section>
+        <section class="doc-panel">
+          <h2>Docker tags</h2>
+          <p>The Docker workflow publishes the full version, the major/minor line, and <code>latest</code>.</p>
+        </section>
+        <section class="doc-panel">
+          <h2>Repository secrets</h2>
+          <ul>
+            <li><code>RELEASE_PLEASE_TOKEN</code></li>
+            <li><code>DOCKERHUB_USERNAME</code></li>
+            <li><code>DOCKERHUB_TOKEN</code></li>
+          </ul>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VATSIM Monitor Configuration | kriziw Docs</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="project-vatsim">
+    <header class="shell page-hero">
+      <img class="project-logo" src="../assets/vatsim-monitor-logo.svg" alt="VATSIM Monitor logo" />
+      <p class="eyebrow">VATSIM Monitor Configuration</p>
+      <h1>Make the monitor match your airspace.</h1>
+      <p>Most deployment settings live in <code>.env</code>, while alert rules and templates live in the web UI.</p>
+    </header>
+    <main class="shell doc-layout">
+      <aside class="sidebar" aria-label="VATSIM Monitor documentation navigation">
+        <a href="./index.html">Overview</a>
+        <a href="./quick-start.html">Quick Start</a>
+        <a href="./deployment.html">Deployment</a>
+        <a aria-current="page" href="./configuration.html">Configuration</a>
+        <a href="./development.html">Development</a>
+      </aside>
+      <div>
+        <section class="doc-panel">
+          <h2>Important .env values</h2>
+          <ul>
+            <li><code>MYSQL_ROOT_PASSWORD</code> and <code>MYSQL_PASSWORD</code> should be changed for real installs.</li>
+            <li><code>WEB_PORT</code> and <code>SERVER_PORT</code> control host port publishing.</li>
+            <li><code>APP_VERSION</code> pins the published server and web image tag.</li>
+            <li><code>TZ</code> controls container timezone, while log entries are stored in UTC and rendered in browser-local time.</li>
+            <li><code>LOG_LEVEL</code>, <code>LOG_MAX_FILE_SIZE_BYTES</code>, and <code>LOG_MAX_FILES</code> control rotating server logs.</li>
+          </ul>
+        </section>
+        <section class="doc-panel">
+          <h2>Monitoring settings</h2>
+          <p><code>MONITOR_POLL_INTERVAL_MS</code> controls how often the backend polls VATSIM data. The default is <code>15000</code>.</p>
+        </section>
+        <section class="doc-panel">
+          <h2>Notification setup</h2>
+          <p>Discord webhook channels and per-event templates are configured in the web UI. Templates can be customized for online, offline, and controller-change events.</p>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

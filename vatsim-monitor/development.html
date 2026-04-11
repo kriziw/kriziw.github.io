@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VATSIM Monitor Development | kriziw Docs</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="project-vatsim">
+    <header class="shell page-hero">
+      <img class="project-logo" src="../assets/vatsim-monitor-logo.svg" alt="VATSIM Monitor logo" />
+      <p class="eyebrow">VATSIM Monitor Development</p>
+      <h1>Unified workspace, separate apps.</h1>
+      <p>The repository is a Node workspace with server, web, and shared packages.</p>
+    </header>
+    <main class="shell doc-layout">
+      <aside class="sidebar" aria-label="VATSIM Monitor documentation navigation">
+        <a href="./index.html">Overview</a>
+        <a href="./quick-start.html">Quick Start</a>
+        <a href="./deployment.html">Deployment</a>
+        <a href="./configuration.html">Configuration</a>
+        <a aria-current="page" href="./development.html">Development</a>
+      </aside>
+      <div>
+        <section class="doc-panel">
+          <h2>Repository layout</h2>
+          <ul>
+            <li><code>apps/web</code> contains the SvelteKit frontend.</li>
+            <li><code>apps/server</code> contains the backend API and background monitoring services.</li>
+            <li><code>packages/domain</code>, <code>packages/data</code>, and <code>packages/integrations</code> contain shared types, database helpers, and provider interfaces.</li>
+          </ul>
+        </section>
+        <section class="doc-panel">
+          <h2>Workspace commands</h2>
+          <pre><code>npm run dev:web
+npm run dev:server
+npm run db:migrate
+npm run build
+npm run check</code></pre>
+        </section>
+        <section class="doc-panel">
+          <h2>Current scope</h2>
+          <p>The new repository replaces and merges the earlier <code>vatsim-airspace-monitoring-web</code> and <code>vatsim-airspace-monitoring-api</code> projects with one backend/domain layer, one database schema, and one frontend.</p>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

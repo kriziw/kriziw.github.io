@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MindBuzz Configuration | kriziw Docs</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="project-mindbuzz">
+    <header class="shell page-hero">
+      <img class="project-logo project-logo--wide" src="../assets/mindbuzz-logo.svg" alt="MindBuzz logo" />
+      <p class="eyebrow">MindBuzz Configuration</p>
+      <h1>Keep auth and quiz data recoverable.</h1>
+      <p>MindBuzz intentionally keeps its runtime state in simple mounted folders.</p>
+    </header>
+    <main class="shell doc-layout">
+      <aside class="sidebar" aria-label="MindBuzz documentation navigation">
+        <a href="./index.html">Overview</a>
+        <a href="./quick-start.html">Quick Start</a>
+        <a href="./deployment.html">Deployment</a>
+        <a aria-current="page" href="./configuration.html">Configuration</a>
+        <a href="./releases.html">Releases</a>
+      </aside>
+      <div>
+        <section class="doc-panel">
+          <h2>Runtime files</h2>
+          <ul>
+            <li><code>config/history.db</code> stores manager accounts, per-manager settings, quizzes, and completed quiz runs.</li>
+            <li><code>config/game.json</code> is a legacy migration source for older installs.</li>
+            <li><code>config/auth.json</code> stores OIDC provider settings so a bad SSO setup can be repaired outside the database.</li>
+            <li><code>media/</code> stores uploaded local audio files served at <code>/media/&lt;filename&gt;</code>.</li>
+          </ul>
+        </section>
+        <section class="doc-panel">
+          <h2>SSO / OIDC</h2>
+          <p>SSO is optional. The first admin account is always created locally, and local login remains the break-glass fallback.</p>
+          <ul>
+            <li>Configure OIDC from the manager admin UI at <code>/manager</code> -> <code>SSO</code>.</li>
+            <li>Use <code>https://your-domain.example/auth/oidc/callback</code> as the production redirect URI.</li>
+            <li>Role mapping can use a claim path such as <code>groups</code> with values like <code>mindbuzz-admin</code> and <code>mindbuzz-manager</code>.</li>
+          </ul>
+        </section>
+        <section class="doc-panel">
+          <h2>Quiz media</h2>
+          <p>Questions can use optional image, video, and audio URLs. Managers can also upload local audio into the mounted <code>media/</code> folder.</p>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
