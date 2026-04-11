@@ -493,9 +493,18 @@ code {
 .doc-panel pre {
   overflow-x: auto;
   border-radius: 1rem;
-  background: #231d18;
-  color: #fff4df;
+  border: 1px solid var(--line);
+  background: rgba(255, 248, 236, 0.92);
+  color: var(--ink);
   padding: 1rem;
+}
+
+.doc-panel pre code {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+  color: inherit;
 }
 
 .doc-panel table {
