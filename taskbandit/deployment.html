@@ -48,7 +48,7 @@
         </section>
         <section class="doc-panel">
           <h2>Reverse proxy</h2>
-          <p>Terminate TLS at your proxy. Route API traffic to <code>taskbandit-server:8080</code> and web traffic to <code>taskbandit-web:80</code>. See the dedicated <a href="./reverse-proxy.html">reverse proxy guide</a> for required headers, CORS values, and WebSocket forwarding.</p>
+          <p>Terminate TLS at your proxy. Route API traffic to <code>taskbandit-server:8080</code> and web traffic to <code>taskbandit-web:80</code>. Keep the admin UI under <code>/admin</code> on the same web host instead of creating a separate upstream for it. See the dedicated <a href="./reverse-proxy.html">reverse proxy guide</a> for the simplified env values, Nginx Proxy Manager notes, headers, and WebSocket forwarding.</p>
         </section>
         <section class="doc-panel">
           <h2>Upgrade order</h2>
