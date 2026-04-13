@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Troubleshooting | TaskBandit Docs</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="shell page-hero">
+      <img class="project-logo project-logo--docs" src="../assets/taskbandit-docs-logo.svg" alt="TaskBandit logo" />
+      <p class="eyebrow">Troubleshooting</p>
+      <h1>Useful checks when TaskBandit does not behave as expected.</h1>
+      <p>Start with the health checks, then verify runtime config, proxy routing, certificates, and persistent data.</p>
+    </header>
+    <main class="shell doc-layout">
+      <aside class="sidebar" aria-label="TaskBandit documentation navigation">
+        <a href="../index.html">All projects</a>
+        <a href="./index.html">Overview</a>
+        <a href="./quick-start.html">Quick Start</a>
+        <a href="./deployment.html">Deployment</a>
+        <a href="./reverse-proxy.html">Reverse Proxy</a>
+        <a aria-current="page" href="./troubleshooting.html">Troubleshooting</a>
+        <a href="./clients.html">Clients</a>
+        <a href="./configuration.html">Configuration</a>
+        <a href="./releases.html">Releases</a>
+        <a href="./development.html">Development</a>
+      </aside>
+      <div>
+        <section class="doc-panel">
+          <h2>Quick health checks</h2>
+          <p>Run these from the host running the Compose stack, replacing the example domains with your own public URLs.</p>
+          <pre><code>docker ps
+curl https://api.taskbandit.example.com/health
+curl https://api.taskbandit.example.com/api/auth/providers
+curl https://api.taskbandit.example.com/api/bootstrap/status
+curl https://taskbandit.example.com/taskbandit-runtime-config.js</code></pre>
+          <p>The API health endpoint should report a healthy server and database. The runtime config should show the public web and API base URLs your browser is expected to use.</p>
+        </section>
+
+        <section class="doc-panel">
+          <h2>Compose service names and logs</h2>
+          <p>If <code>docker compose logs taskbandit-server</code> says there is no such service, your Compose project may still be valid but the service name might differ from the container name. Use container logs directly:</p>
+          <pre><code>docker ps
+docker logs --tail=100 taskbandit-server
+docker logs --tail=100 taskbandit-web
+docker logs --tail=100 taskbandit-postgres</code></pre>
+          <p>For Compose-managed service names, inspect the file with:</p>
+          <pre><code>docker compose config --services</code></pre>
+        </section>
+
+        <section class="doc-panel">
+          <h2>Runtime config and env values</h2>
+          <p>For a normal domain setup, these are the important public URL values:</p>
+          <pre><code>TASKBANDIT_PUBLIC_WEB_BASE_URL=https://taskbandit.example.com
+TASKBANDIT_PUBLIC_API_BASE_URL=https://api.taskbandit.example.com</code></pre>
+          <p>The server derives the normal CORS origin from <code>TASKBANDIT_PUBLIC_WEB_BASE_URL</code>. You should not need legacy admin/client/CORS overrides unless you intentionally run an unusual deployment.</p>
+          <p>Check what the running containers actually received:</p>
+          <pre><code>docker exec taskbandit-server env | grep TASKBANDIT_
+docker exec taskbandit-web env | grep TASKBANDIT_</code></pre>
+          <p>If the browser still loads stale values, recreate the web container and clear browser cache or test in a private window.</p>
+        </section>
+
+        <section class="doc-panel">
+          <h2>Cannot load setup or CORS errors</h2>
+          <p>If the admin page says it could not load household setup, open browser developer tools and check the failing API request. Then test the same endpoint from the server:</p>
+          <pre><code>curl -I -H "Origin: https://taskbandit.example.com" https://api.taskbandit.example.com/api/auth/providers
+curl -I -H "Origin: https://taskbandit.example.com" https://api.taskbandit.example.com/api/bootstrap/status</code></pre>
+          <p>Expected result: successful responses should include an allowed origin for the web URL. If they do not, verify the running server has the correct <code>TASKBANDIT_PUBLIC_WEB_BASE_URL</code> and <code>TASKBANDIT_PUBLIC_API_BASE_URL</code>, then recreate the stack.</p>
+        </section>
+
+        <section class="doc-panel">
+          <h2>Certificate and proxy checks</h2>
+          <p>If the API works by IP but fails by HTTPS domain, check the certificate served by the proxy:</p>
+          <pre><code>openssl s_client -connect api.taskbandit.example.com:443 -servername api.taskbandit.example.com &lt;/dev/null | openssl x509 -noout -subject -issuer -dates -ext subjectAltName</code></pre>
+          <p>For Nginx Proxy Manager, the SSL tab should normally have a valid certificate selected for the domain, Force SSL enabled, HTTP/2 support enabled if available, and Websockets Support enabled on the proxy host. Keep the API host forwarding to port <code>8080</code> and the web host forwarding to port <code>4173</code> on the Docker host, or to container ports if NPM shares the Docker network.</p>
+        </section>
+
+        <section class="doc-panel">
+          <h2>403 from the admin path</h2>
+          <p>The admin UI lives under the same web host as the client UI. Do not create a separate proxy host for <code>/admin</code>. Use:</p>
+          <pre><code>https://taskbandit.example.com/        -> taskbandit-web
+https://taskbandit.example.com/admin/ -> taskbandit-web
+https://api.taskbandit.example.com/   -> taskbandit-server</code></pre>
+          <p>If <code>/admin</code> redirects to an IP URL or drops the expected port, check the proxy host target and the runtime config file.</p>
+        </section>
+
+        <section class="doc-panel">
+          <h2>Reset for testing</h2>
+          <p>To reset a test install while keeping your Compose and env files, stop the stack and move the persistent data folder aside:</p>
+          <pre><code>cd ~/taskbandit
+docker compose down
+mv data "data-reset-$(date +%Y%m%d-%H%M%S)"
+mkdir -p data/postgres data/taskbandit
+docker compose pull
+docker compose up -d --force-recreate</code></pre>
+          <p>Then clear browser site data for the TaskBandit domain, or use a private window, so an old token does not point at a fresh database.</p>
+        </section>
+
+        <section class="doc-panel">
+          <h2>Demo data</h2>
+          <p>Demo seed data is off by default. Use it only for testing or walkthroughs:</p>
+          <pre><code>TASKBANDIT_BOOTSTRAP_SEED_DEMO_DATA=true</code></pre>
+          <p>For normal installs, keep it false and use the first-household setup flow instead.</p>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
