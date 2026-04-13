@@ -46,10 +46,15 @@
           <p>These values are injected into <code>taskbandit-web</code> at container startup, so the same image can be reused across environments.</p>
           <ul>
             <li><code>TASKBANDIT_PUBLIC_API_BASE_URL</code>, default <code>http://localhost:8080</code></li>
-            <li><code>TASKBANDIT_PUBLIC_CLIENT_BASE_URL</code>, default <code>http://localhost:4173</code></li>
-            <li><code>TASKBANDIT_PUBLIC_ADMIN_BASE_URL</code>, default <code>http://localhost:4173/admin</code></li>
-            <li><code>TASKBANDIT_CORS_ALLOWED_ORIGINS</code>, default <code>http://localhost:4173</code></li>
+            <li><code>TASKBANDIT_PUBLIC_WEB_BASE_URL</code>, default <code>http://localhost:4173</code></li>
+            <li><code>TASKBANDIT_PUBLIC_ADMIN_BASE_URL</code> and <code>TASKBANDIT_PUBLIC_CLIENT_BASE_URL</code> are legacy overrides for unusual deployments. In a normal install, set only the public web base URL and TaskBandit derives <code>/admin</code> automatically.</li>
+            <li><code>TASKBANDIT_CORS_ALLOWED_ORIGINS</code> is a legacy override for unusual deployments. In a normal install, TaskBandit derives the web origin from <code>TASKBANDIT_PUBLIC_WEB_BASE_URL</code>.</li>
           </ul>
+        </section>
+        <section class="doc-panel">
+          <h2>Starter templates and translations</h2>
+          <p>During first household setup, TaskBandit can import starter chore templates. Each starter template includes translated group, type, sub-type, checklist, and follow-up labels for English, German, and Hungarian.</p>
+          <p>The imported templates become normal household data. Admins and parent users can adjust them later in the admin Templates section, where the editor groups related templates and uses language tabs to keep translation editing compact.</p>
         </section>
         <section class="doc-panel">
           <h2>Optional providers</h2>

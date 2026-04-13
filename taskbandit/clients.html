@@ -31,6 +31,7 @@
           <p>The client UI is served at <code>/</code>. It is browser-first, works on desktop and mobile browsers, and can also be installed as a PWA where the browser supports it.</p>
           <ul>
             <li>Chore lists, completion flow, proof photos, approvals, and takeover requests.</li>
+            <li>Group, type, and optional sub-type labels on chore cards so the selected template structure is visible in day-to-day use.</li>
             <li>End-user language, theme, notification, and device settings.</li>
             <li>Foreground live sync while open and optional background Web Push when VAPID keys are configured.</li>
           </ul>
@@ -39,7 +40,8 @@
           <h2>Admin web UI</h2>
           <p>The admin UI is served at <code>/admin</code> and uses session storage so admin access is scoped to the current browser session.</p>
           <ul>
-            <li>Household settings, member management, templates, types, sub-types, and translation management.</li>
+            <li>Household settings, member management, grouped templates, types, sub-types, and translation management.</li>
+            <li>A compact Templates editor with grouped browsing, search, and language tabs for maintaining translated group, type, and description text without excessive vertical scrolling.</li>
             <li>Auth, SMTP, backup-readiness, notification recovery, runtime logs, and system status.</li>
           </ul>
         </section>

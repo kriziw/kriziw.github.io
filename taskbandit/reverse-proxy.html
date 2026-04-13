@@ -43,6 +43,7 @@
 TASKBANDIT_PUBLIC_API_BASE_URL=https://api.taskbandit.example.com
 TASKBANDIT_SERVE_EMBEDDED_WEB=false</code></pre>
           <p>TaskBandit derives the admin URL automatically as <code>&lt;web-base-url&gt;/admin</code>. In most domain-based installs, you do not need to set separate admin/client URL overrides or explicit CORS values.</p>
+          <p>Only set <code>TASKBANDIT_REVERSE_PROXY_PATH_BASE</code> if you intentionally mount the API under a subpath. For most domain-based setups, leave it blank.</p>
         </section>
 
         <section class="doc-panel">
@@ -134,8 +135,7 @@ server {
         <section class="doc-panel">
           <h2>Subpath hosting notes</h2>
           <p>Prefer dedicated hostnames when possible. If you must mount the API under a subpath, set <code>TASKBANDIT_REVERSE_PROXY_PATH_BASE</code> to that subpath and keep <code>/health</code> routed separately or use Docker health checks instead.</p>
-          <pre><code>TASKBANDIT_REVERSE_PROXY_ENABLED=true
-TASKBANDIT_REVERSE_PROXY_PATH_BASE=/taskbandit</code></pre>
+          <pre><code>TASKBANDIT_REVERSE_PROXY_PATH_BASE=/taskbandit</code></pre>
         </section>
       </div>
     </main>
