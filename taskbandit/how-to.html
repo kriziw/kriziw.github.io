@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>How To | TaskBandit Docs</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="shell page-hero">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="../assets/taskbandit-logo-dark.png" />
+        <source media="(prefers-color-scheme: light)" srcset="../assets/taskbandit-logo-light.png" />
+        <img class="project-logo project-logo--docs" src="../assets/taskbandit-logo-light.png" alt="TaskBandit logo" />
+      </picture>
+      <p class="eyebrow">How To</p>
+      <h1>Step-by-step guides for common tasks.</h1>
+      <p>Practical walkthroughs for household members, parents, and admins.</p>
+    </header>
+    <main class="shell doc-layout">
+      <aside class="sidebar" aria-label="TaskBandit documentation navigation">
+        <a href="../index.html">All projects</a>
+        <a href="./index.html">Overview</a>
+        <a href="./quick-start.html">Quick Start</a>
+        <a href="./deployment.html">Deployment</a>
+        <a href="./reverse-proxy.html">Reverse Proxy</a>
+        <a href="./troubleshooting.html">Troubleshooting</a>
+        <a href="./clients.html">Clients</a>
+        <a aria-current="page" href="./how-to.html">How To</a>
+        <a href="./configuration.html">Configuration</a>
+        <a href="./releases.html">Releases</a>
+        <a href="./development.html">Development</a>
+      </aside>
+      <div>
+
+        <!-- ═══════════════════════════════════════
+             MEMBER WORKFLOWS
+        ════════════════════════════════════════ -->
+
+        <section class="doc-panel">
+          <h2>Complete a chore</h2>
+          <ol>
+            <li>Open the client at <code>/</code> (or the Chores tab on Android). Today's assigned chores appear in the main list, grouped by type.</li>
+            <li>Tap or click the chore you have finished.</li>
+            <li>If the chore requires proof — a camera icon is shown — attach a photo from your camera or gallery before submitting. Chores marked as requiring proof will not accept a completion without one.</li>
+            <li>Tap <strong>Complete</strong>. The chore moves out of the active list, your points balance increases, and your streak is extended if this is your first completion of the day.</li>
+            <li>If the chore is part of a chain (for example, <em>Hang clothes</em> follows <em>Wash clothes</em>), the follow-up task is automatically scheduled for the assigned member once you submit.</li>
+          </ol>
+          <p>On Android, the speed dial FAB gives you quick access to the most common completion shortcut so you can finish a task without navigating through the list.</p>
+        </section>
+
+        <section class="doc-panel">
+          <h2>Handle overdue chores</h2>
+          <p>Chores whose due time has passed without a completion appear in the <strong>Overdue</strong> section above the regular chore list on both web and Android, highlighted with a prominent alert style so they stand out.</p>
+          <ol>
+            <li>Tap the overdue chore to open it — the completion flow is the same as a regular chore.</li>
+            <li>Completing an overdue chore still awards full points unless the admin has configured an overdue penalty in household settings.</li>
+            <li>If you cannot complete the chore yourself, use <strong>Request takeover</strong> (see below) to hand it to another member.</li>
+          </ol>
+        </section>
+
+        <section class="doc-panel">
+          <h2>Request or grant a takeover</h2>
+          <p>A takeover lets one household member cover another's assigned chore.</p>
+          <ol>
+            <li>Open the chore you want covered (it can be your own chore or one you are volunteering to cover).</li>
+            <li>Tap <strong>Request takeover</strong>. A notification is sent to the relevant member.</li>
+            <li>The receiving member sees the request on their device. They can accept, which reassigns the chore to them, or decline, which returns it to the original assignee.</li>
+            <li>Once accepted, the chore appears in the new member's active list and points for completion are credited to whoever finishes it.</li>
+          </ol>
+        </section>
+
+        <section class="doc-panel">
+          <h2>Redeem a reward (child / member)</h2>
+          <ol>
+            <li>Open the <strong>Rewards</strong> tab (web or Android). Your current points balance appears at the top of the page.</li>
+            <li>Browse the enabled rewards. Each card shows the reward name, description, point cost, and an eligibility badge if the reward is restricted to a specific member type.</li>
+            <li>Rewards you cannot yet afford are shown with a dimmed Redeem button. A cooldown notice appears on any reward you have redeemed recently and must wait before redeeming again.</li>
+            <li>Tap <strong>Redeem</strong> on the reward you want. A confirmation dialog shows the point cost and your remaining balance after the redemption.</li>
+            <li>Confirm the redemption.
+              <ul>
+                <li>If the household uses automatic approval, points are deducted immediately and you receive a confirmation notification.</li>
+                <li>If the household requires approval, a pending request is created. Your points are held until an admin or parent approves or rejects it. The request appears in your <strong>History</strong> tab with a <em>Pending</em> status.</li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <section class="doc-panel">
+          <h2>Check redemption history</h2>
+          <ol>
+            <li>Open the <strong>Rewards</strong> tab and switch to the <strong>History</strong> tab (web) or expand the <strong>My Redemptions</strong> section (Android).</li>
+            <li>Each entry shows the reward name, the points deducted, the request date, and the current status: <em>Pending</em>, <em>Approved</em>, or <em>Rejected</em>.</li>
+            <li>Rejected requests show the admin's note if one was provided.</li>
+          </ol>
+        </section>
+
+        <!-- ═══════════════════════════════════════
+             ADMIN / PARENT WORKFLOWS
+        ════════════════════════════════════════ -->
+
+        <section class="doc-panel">
+          <h2>Approve or reject a reward redemption (admin / parent)</h2>
+          <p>When a household member redeems a reward and approval is required, a badge appears on the Rewards nav item showing the number of pending requests.</p>
+          <ol>
+            <li>Open the admin UI at <code>/admin</code> and navigate to <strong>Rewards</strong>, then switch to the <strong>Approvals</strong> tab. On Android, the pending queue appears in the Rewards tab for admin and parent users.</li>
+            <li>Each pending row shows the member's name, the reward they requested, the point cost, and the request time.</li>
+            <li>Tap <strong>Approve</strong> to deduct the points from the member's balance and send them an approval notification.</li>
+            <li>Tap <strong>Reject</strong> to decline the request without deducting points. An optional note field lets you explain the rejection — the member sees this note in their history.</li>
+          </ol>
+        </section>
+
+        <section class="doc-panel">
+          <h2>Enable starter rewards</h2>
+          <p>TaskBandit seeds nine starter rewards into every new household, all disabled by default: extra screen time (30 min and 1 hour), a treat of their choice, pick tonight's dinner, pick the movie, choose the family activity, stay up 30 minutes later, skip a chore, and pocket money bonus.</p>
+          <ol>
+            <li>Open the admin UI and navigate to <strong>Rewards</strong>.</li>
+            <li>The catalogue is grouped by category. Each row has a toggle on the right.</li>
+            <li>Flip the toggle next to any starter reward to enable it. It becomes immediately visible in the member-facing shop.</li>
+            <li>To adjust the point cost, click the reward row to open its editor and change the <strong>Point cost</strong> field, then save.</li>
+          </ol>
+        </section>
+
+        <section class="doc-panel">
+          <h2>Create a custom reward</h2>
+          <ol>
+            <li>In the admin Rewards page, click <strong>+ Add custom reward</strong>.</li>
+            <li>Fill in the reward editor on the right:
+              <ul>
+                <li><strong>Title</strong> — what the member sees in the shop (e.g. <em>Choose Saturday's activity</em>).</li>
+                <li><strong>Description</strong> — optional extra context shown below the title.</li>
+                <li><strong>Category</strong> — groups the reward in the catalogue (screen time, treat, activity, privilege, allowance, or custom).</li>
+                <li><strong>Point cost</strong> — how many points the member spends.</li>
+                <li><strong>Max redemptions per child</strong> — optional lifetime cap per member. Leave blank for unlimited.</li>
+                <li><strong>Cooldown (days)</strong> — optional minimum gap between redemptions of this reward. Leave blank for no cooldown.</li>
+                <li><strong>Eligibility</strong> — <em>All members</em>, <em>Children only</em>, or <em>Adults only</em>. Children-only rewards are hidden from parent and admin members in the shop; adult-only rewards are hidden from child members.</li>
+              </ul>
+            </li>
+            <li>Click <strong>Save</strong>. The reward is created but disabled. Flip the toggle in the catalogue list to make it visible in the shop.</li>
+          </ol>
+        </section>
+
+        <section class="doc-panel">
+          <h2>Turn off reward approval (auto-approve mode)</h2>
+          <p>If you trust members to redeem without a parent review — for example in an adult household — you can disable the approval step entirely.</p>
+          <ol>
+            <li>Open the admin UI and navigate to <strong>Settings</strong>.</li>
+            <li>Find the <strong>Require reward approval</strong> toggle and turn it off.</li>
+            <li>From that point, all new redemptions are approved instantly and points are deducted at the moment of submission. Existing pending requests in the queue are not affected automatically — approve or reject them manually.</li>
+          </ol>
+        </section>
+
+        <section class="doc-panel">
+          <h2>Import starter chore templates</h2>
+          <p>Starter templates are available during first-household setup and can also be imported later from the admin Templates page.</p>
+          <ol>
+            <li>During the household setup wizard, a list of starter template groups is shown with checkboxes. Select the routines that apply to your household (laundry, kitchen, cleaning, bedding, bins, plants, and others).</li>
+            <li>Click <strong>Import selected</strong>. The templates are added to your household's chore catalogue as normal editable templates.</li>
+            <li>If you skip the import during setup, you can still access it later from the admin Templates page using the <strong>Import starters</strong> button.</li>
+            <li>All starter templates are translated into English, German, and Hungarian. The language used in the member-facing chore cards follows each member's language preference.</li>
+          </ol>
+        </section>
+
+        <section class="doc-panel">
+          <h2>Set up a chore chain</h2>
+          <p>A chore chain automatically schedules a follow-up task when a preceding chore is completed — useful for routines like laundry (wash → hang → fold) or kitchen cleanup (cook → wash up → put away).</p>
+          <ol>
+            <li>Open the admin Templates page and find or create the chore that should trigger the follow-up (e.g. <em>Wash clothes</em>).</li>
+            <li>In the template editor, find the <strong>Follow-up</strong> field. Select the template that should be scheduled next (e.g. <em>Hang clothes</em>).</li>
+            <li>Choose the assignment for the follow-up: same member, round-robin, or a specific member.</li>
+            <li>Save. Now whenever a household member completes <em>Wash clothes</em>, <em>Hang clothes</em> is automatically added to the schedule for the assigned member.</li>
+          </ol>
+        </section>
+
+        <section class="doc-panel">
+          <h2>Invite a household member</h2>
+          <ol>
+            <li>Open the admin UI and navigate to <strong>Members</strong>.</li>
+            <li>Click <strong>Invite member</strong> and enter their email address and the role you want to assign them (child, parent, or admin).</li>
+            <li>An invitation email is sent. The recipient clicks the link, creates a password, and joins the household automatically.</li>
+            <li>If email is not configured, you can generate a one-time invite link from the same dialog and share it manually.</li>
+          </ol>
+        </section>
+
+        <!-- ═══════════════════════════════════════
+             ANDROID-SPECIFIC
+        ════════════════════════════════════════ -->
+
+        <section class="doc-panel">
+          <h2>Connect the Android app to your server</h2>
+          <ol>
+            <li>Install the APK from the latest GitHub release — find it on the <a href="./releases.html">Releases</a> page or directly at <a href="https://github.com/kriziw/TaskBandit/releases">github.com/kriziw/TaskBandit/releases</a>. Enable <em>Install from unknown sources</em> in your Android settings if prompted.</li>
+            <li>Open the app. On the sign-in screen, tap the server URL field and enter your public API base URL (e.g. <code>https://api.taskbandit.example.com</code>).</li>
+            <li>Enter your household email and password, then tap <strong>Sign in</strong>. The app connects, downloads the household state, and lands on the Chores tab.</li>
+          </ol>
+        </section>
+
+        <section class="doc-panel">
+          <h2>Use the speed dial FAB</h2>
+          <p>The floating action button (FAB) in the bottom-right corner of the Android app expands into a shortcut menu on tap.</p>
+          <ol>
+            <li>Tap the FAB. It fans out into labelled shortcut buttons for common actions.</li>
+            <li>Tap the relevant shortcut — for example, to mark the topmost due chore complete without scrolling to it.</li>
+            <li>Tap anywhere outside the expanded FAB, or tap the FAB again, to collapse it.</li>
+          </ol>
+        </section>
+
+        <section class="doc-panel">
+          <h2>Update the Android app in-app</h2>
+          <p>When a newer APK is available, a floating update bubble appears in the corner of the app.</p>
+          <ol>
+            <li>Tap the update bubble. A prompt confirms the version and asks whether to download now.</li>
+            <li>Tap <strong>Download &amp; install</strong>. The APK is downloaded in the background.</li>
+            <li>When the download completes, a system install prompt appears. Accept it to update the app.</li>
+            <li>If you dismiss the bubble, it reappears the next time you open the app until the update is installed.</li>
+          </ol>
+        </section>
+
+        <section class="doc-panel">
+          <h2>Use the app offline</h2>
+          <p>The Android app queues actions when there is no network connection and flushes them automatically when connectivity is restored.</p>
+          <ul>
+            <li>Chore completions and reward redemption requests submitted while offline are saved locally and sent to the server the next time the app has a connection.</li>
+            <li>Points and streaks are updated once the queued actions are successfully synced.</li>
+            <li>If a queued action conflicts with a server-side change (e.g. the chore was already completed by another member), the server resolves the conflict and the app updates accordingly.</li>
+          </ul>
+        </section>
+
+      </div>
+    </main>
+    <footer class="shell footer">
+      <span>TaskBandit docs · <a href="../index.html">All projects</a></span>
+      <a href="https://github.com/kriziw/TaskBandit">GitHub</a>
+    </footer>
+  </body>
+</html>
