@@ -8,10 +8,14 @@
   </head>
   <body>
     <header class="shell page-hero">
-      <img class="project-logo project-logo--docs" src="../assets/taskbandit-docs-logo.svg" alt="TaskBandit logo" />
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="../assets/taskbandit-logo-dark.png" />
+        <source media="(prefers-color-scheme: light)" srcset="../assets/taskbandit-logo-light.png" />
+        <img class="project-logo project-logo--docs" src="../assets/taskbandit-logo-light.png" alt="TaskBandit logo" />
+      </picture>
       <p class="eyebrow">Clients</p>
-      <h1>Admin, web client, and Android.</h1>
-      <p>TaskBandit keeps operational setup separate from day-to-day chore work.</p>
+      <h1>Admin UI, web/PWA client, and Android.</h1>
+      <p>TaskBandit keeps household administration separate from day-to-day chore work, while surfacing the right features for each role.</p>
     </header>
     <main class="shell doc-layout">
       <aside class="sidebar" aria-label="TaskBandit documentation navigation">
@@ -29,41 +33,74 @@
       <div>
         <section class="doc-panel">
           <h2>Client web UI and PWA</h2>
-          <p>The client UI is served at <code>/</code>. It is browser-first, works on desktop and mobile browsers, and can also be installed as a PWA where the browser supports it.</p>
+          <p>The client UI is served at <code>/</code>. It is browser-first, works on desktop and mobile browsers, and can be installed as a PWA where the browser supports it. Children, parents, and admin members all use the same URL; the interface adapts to their role.</p>
           <ul>
-            <li>Chore lists, completion flow, proof photos, approvals, and takeover requests.</li>
-            <li>Group, type, and optional sub-type labels on chore cards so the selected template structure is visible in day-to-day use.</li>
-            <li>End-user language, theme, notification, and device settings.</li>
-            <li>Foreground live sync while open and optional background Web Push when VAPID keys are configured.</li>
+            <li><strong>Chores</strong> — today's assigned tasks, overdue section (missed chores surfaced with prominent alerting so nothing slips), completion flow, proof photo upload where required, and takeover requests to hand off or cover another member's chore.</li>
+            <li><strong>Rewards shop</strong> — a catalogue of enabled rewards browsable by category. Each card shows the reward title, description, point cost, and an eligibility badge (child-only, adult-only, or available to all). Household members can redeem rewards for points; a confirmation dialog shows the current balance and what will remain after redemption. A history tab lists past requests with their approval status.</li>
+            <li><strong>Achievements</strong> — unlockable milestones shown as a panel or badge collection. Achievements are earned by streaks, completing a perfect day, or reaching total completion milestones. Unlocked achievements are visible to the whole household on the leaderboard.</li>
+            <li><strong>Points and streaks</strong> — members earn points for each completed chore. A streak counter tracks consecutive days with at least one completion and appears on the leaderboard alongside total points.</li>
+            <li><strong>Leaderboard</strong> — household ranking by points and current streaks, visible to all members.</li>
+            <li><strong>Group, type, and sub-type labels</strong> — chore cards display the template hierarchy so the selected structure is visible in day-to-day use.</li>
+            <li><strong>Live sync</strong> — foreground sync while the app is open; optional background Web Push when VAPID keys are configured.</li>
+            <li><strong>Settings</strong> — end-user language, theme, notification preferences, and device management.</li>
           </ul>
         </section>
+
         <section class="doc-panel">
           <h2>Admin web UI</h2>
-          <p>The admin UI is served at <code>/admin</code> and uses session storage so admin access is scoped to the current browser session.</p>
+          <p>The admin UI is served at <code>/admin</code> and uses session storage so admin access is scoped to the current browser session. Parent members can access an expanded view of household management pages while admins have full control including system and auth configuration.</p>
           <ul>
-            <li>Household settings, member management, grouped templates, types, sub-types, and translation management.</li>
-            <li>A compact Templates editor with grouped browsing, search, and language tabs for maintaining translated group, type, and description text without excessive vertical scrolling.</li>
-            <li>Auth, SMTP, backup-readiness, notification recovery, runtime logs, and system status.</li>
+            <li><strong>Household settings</strong> — member management, roles, reward approval mode, achievement toggles, and overdue penalty settings.</li>
+            <li><strong>Templates</strong> — a compact grouped editor with search, group/type/sub-type browsing, and language tabs (English, German, Hungarian) for maintaining translated chore content without excessive vertical scrolling. Chore chains (follow-up triggers) are configured here.</li>
+            <li><strong>Rewards Manager</strong> — manage the household reward catalogue:
+              <ul>
+                <li>Browse starter and custom rewards grouped by category (screen time, treat, activity, privilege, allowance, custom).</li>
+                <li>Enable or disable individual rewards. Starter rewards are all disabled by default; enable only the ones that fit your household.</li>
+                <li>Create fully custom rewards with point cost, optional per-child redemption limit, and optional cooldown period.</li>
+                <li>Set per-reward eligibility: child-only, adult-only, or available to all members.</li>
+                <li>Approval queue — review pending redemption requests submitted by household members. Approve to deduct points and notify the member, or reject with an optional note. The queue badge shows the count of pending requests.</li>
+                <li>Household setting: <em>Require reward approval</em> — when disabled, redemptions are approved and points deducted automatically on submission.</li>
+              </ul>
+            </li>
+            <li><strong>Achievements</strong> — configure which achievement milestones are active and at what thresholds (streak length, perfect-day count, total completions).</li>
+            <li><strong>System</strong> — auth provider configuration, SMTP setup, backup-readiness panel, notification recovery, and runtime logs.</li>
           </ul>
         </section>
+
         <section class="doc-panel">
           <h2>Native Android app</h2>
-          <p>The Android app remains supported while the browser/PWA client matures. It talks directly to the API server and supports mobile-first chore usage, offline queueing, proof photos, and the widget foundation.</p>
+          <p>The Android app provides a native experience alongside the browser/PWA client. It talks directly to the API server and is built with Kotlin and Jetpack Compose.</p>
+          <ul>
+            <li><strong>Bottom navigation</strong> — children see four tabs: Chores, Leaderboard, Rewards, Settings. Parents and admins see five: Chores, Leaderboard, Rewards, Create, Settings. The Rewards tab badge shows the count of pending redemption approvals for admin and parent users.</li>
+            <li><strong>Rewards tab (child)</strong> — a scrollable shop with category filter chips and reward cards showing cost and eligibility. Tapping a card opens a confirmation dialog with the current balance and balance after redemption. A collapsible section shows the member's redemption history.</li>
+            <li><strong>Rewards tab (parent/admin)</strong> — shows the pending approval queue with approve and reject actions for each pending redemption. Full catalogue management is available in the web admin workspace.</li>
+            <li><strong>Speed dial FAB</strong> — a floating action button expands to shortcuts for the most common quick actions so frequent operations stay one tap away.</li>
+            <li><strong>In-app update notification</strong> — when a new APK build is available, a floating update bubble appears in the corner. Tapping it starts the download and install without leaving the app.</li>
+            <li><strong>Offline queueing</strong> — chore completions and reward redemption requests submitted while offline are queued and flushed automatically when connectivity is restored.</li>
+            <li><strong>Proof photos</strong> — the camera or gallery picker is available for chores that require photo evidence.</li>
+            <li><strong>Takeover requests</strong> — members can request or grant coverage of another member's chore from the native interface.</li>
+          </ul>
         </section>
+
         <section class="doc-panel">
           <h2>Android push behavior</h2>
           <p>Android push is optional and degrades cleanly.</p>
           <ul>
-            <li>If the Android app is built without Firebase values, it still runs and registers as a generic notification device.</li>
-            <li>If the app is built with Firebase app settings, it initializes Firebase at runtime and registers an FCM token when available.</li>
-            <li>If the server is also configured with <code>TASKBANDIT_FCM_ENABLED=true</code> and a Firebase Admin service account, queued household notifications can be delivered as real Android push notifications.</li>
+            <li>If the app is built without Firebase values, it still runs and registers as a generic notification device.</li>
+            <li>If the app is built with Firebase app settings, it initialises Firebase at runtime and registers an FCM token when available.</li>
+            <li>If the server is also configured with <code>TASKBANDIT_FCM_ENABLED=true</code> and a Firebase Admin service account, queued household notifications — including reward redemption requests and approvals — are delivered as real Android push notifications.</li>
           </ul>
         </section>
+
         <section class="doc-panel">
           <h2>Notification priorities</h2>
-          <p>TaskBandit treats mobile/browser push as the primary notification path for household activity. SMTP-backed email is intended for account recovery, admin-style messages such as invites, and fallback delivery when no push-ready device is available.</p>
+          <p>TaskBandit treats mobile and browser push as the primary delivery path for household activity: chore assignments, overdue alerts, reward redemption requests, reward approvals and rejections, and achievement unlocks. SMTP email is intended for account recovery, admin-style messages such as invites, and fallback delivery when no push-ready device is registered.</p>
         </section>
       </div>
     </main>
+    <footer class="shell footer">
+      <span>TaskBandit docs · <a href="../index.html">All projects</a></span>
+      <a href="https://github.com/kriziw/TaskBandit">GitHub</a>
+    </footer>
   </body>
 </html>

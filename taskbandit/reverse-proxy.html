@@ -8,7 +8,11 @@
   </head>
   <body>
     <header class="shell page-hero">
-      <img class="project-logo project-logo--docs" src="../assets/taskbandit-docs-logo.svg" alt="TaskBandit logo" />
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="../assets/taskbandit-logo-dark.png" />
+        <source media="(prefers-color-scheme: light)" srcset="../assets/taskbandit-logo-light.png" />
+        <img class="project-logo project-logo--docs" src="../assets/taskbandit-logo-light.png" alt="TaskBandit logo" />
+      </picture>
       <p class="eyebrow">Reverse Proxy</p>
       <h1>Put TaskBandit behind HTTPS safely.</h1>
       <p>Use a reverse proxy for TLS, public hostnames, and routing while keeping the server and web containers simple.</p>
@@ -140,5 +144,9 @@ server {
         </section>
       </div>
     </main>
+    <footer class="shell footer">
+      <span>TaskBandit docs · <a href="../index.html">All projects</a></span>
+      <a href="https://github.com/kriziw/TaskBandit">GitHub</a>
+    </footer>
   </body>
 </html>

@@ -418,6 +418,127 @@ code {
   padding: 1.35rem 0 1.1rem;
 }
 
+/* Overview hero with mascot */
+.overview-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 2.5rem 0 2rem;
+}
+
+.overview-hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.5rem 2rem;
+  align-items: end;
+}
+
+.overview-hero-text {
+  min-width: 0;
+}
+
+.overview-hero-text .eyebrow {
+  margin: 0 0 0.6rem;
+}
+
+.overview-hero-text h1 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 0.92;
+  letter-spacing: -0.07em;
+}
+
+.overview-hero-text p {
+  max-width: 680px;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.6vw, 1.12rem);
+  line-height: 1.6;
+}
+
+.mascot-hero {
+  width: clamp(8rem, 14vw, 14rem);
+  align-self: end;
+  pointer-events: none;
+  filter: drop-shadow(0 20px 32px rgba(66, 42, 16, 0.18));
+}
+
+/* Feature tiles */
+.feature-tiles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  padding-bottom: 2.5rem;
+}
+
+.feature-tile {
+  border: 1px solid var(--line);
+  border-radius: 1.2rem;
+  background: rgba(255, 248, 236, 0.68);
+  backdrop-filter: blur(12px);
+  padding: 1.1rem 1.25rem;
+}
+
+.feature-tile-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.feature-tile h3 {
+  margin: 0 0 0.3rem;
+  font-size: 1rem;
+  letter-spacing: -0.03em;
+}
+
+.feature-tile p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.feature-badge {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(184, 116, 77, 0.18);
+  color: var(--clay);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* Inline mascot callout */
+.mascot-callout {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  border: 1px solid var(--line);
+  border-radius: 1.4rem;
+  background: rgba(255, 248, 236, 0.68);
+  box-shadow: var(--shadow);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.mascot-callout img {
+  width: 4rem;
+  flex-shrink: 0;
+  filter: drop-shadow(0 8px 14px rgba(66, 42, 16, 0.14));
+}
+
+.mascot-callout-text h2 {
+  margin: 0 0 0.3rem;
+  letter-spacing: -0.04em;
+}
+
+.mascot-callout-text p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
 .project-logo {
   grid-row: 1 / span 3;
   width: 3.7rem;
@@ -546,8 +667,19 @@ code {
 
   .feature-grid,
   .project-grid,
-  .doc-layout {
+  .doc-layout,
+  .feature-tiles {
     grid-template-columns: 1fr;
+  }
+
+  .overview-hero-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .mascot-hero {
+    width: clamp(6rem, 22vw, 9rem);
+    justify-self: start;
+    order: -1;
   }
 
   .hub-page .hero {

@@ -8,7 +8,11 @@
   </head>
   <body>
     <header class="shell page-hero">
-      <img class="project-logo project-logo--docs" src="../assets/taskbandit-docs-logo.svg" alt="TaskBandit logo" />
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="../assets/taskbandit-logo-dark.png" />
+        <source media="(prefers-color-scheme: light)" srcset="../assets/taskbandit-logo-light.png" />
+        <img class="project-logo project-logo--docs" src="../assets/taskbandit-logo-light.png" alt="TaskBandit logo" />
+      </picture>
       <p class="eyebrow">Configuration</p>
       <h1>Environment settings that matter.</h1>
       <p>Most installs can start from <code>.env.example</code> and change only the public URLs, secrets, data paths, and optional providers.</p>
@@ -53,9 +57,19 @@
           </ul>
         </section>
         <section class="doc-panel">
-          <h2>Starter templates and translations</h2>
-          <p>During first household setup, TaskBandit can import starter chore templates. Each starter template includes translated group, type, sub-type, checklist, and follow-up labels for English, German, and Hungarian.</p>
-          <p>The imported templates become normal household data. Admins and parent users can adjust them later in the admin Templates section, where the editor groups related templates and uses language tabs to keep translation editing compact.</p>
+          <h2>Starter templates and rewards</h2>
+          <p>During first household setup, TaskBandit can import starter chore templates. Each starter template includes translated group, type, sub-type, checklist, and follow-up labels for English, German, and Hungarian. The imported templates become normal household data and can be adjusted from the admin Templates page.</p>
+          <p>TaskBandit also seeds nine starter rewards (screen time, treats, activities, privileges, and allowance) into every new household. All starter rewards are disabled by default — go to the admin Rewards Manager and enable only the ones that fit your household.</p>
+          <p>Custom rewards can be created from scratch in the Rewards Manager at any time. Each reward has a point cost, an optional per-child redemption limit, an optional cooldown period, and an eligibility setting (child-only, adult-only, or all members).</p>
+        </section>
+
+        <section class="doc-panel">
+          <h2>Household-level reward settings</h2>
+          <p>The admin Settings page exposes a toggle that controls how reward redemptions are handled:</p>
+          <ul>
+            <li><strong>Require reward approval</strong> (default: on) — when enabled, a child's redemption request creates a pending queue entry. An admin or parent must approve it before points are deducted and the member is notified. When disabled, redemptions are approved and points are deducted automatically on submission.</li>
+          </ul>
+          <p>The approval queue is accessible from the admin Rewards Manager page and from the native Android Rewards tab for admin and parent users.</p>
         </section>
         <section class="doc-panel">
           <h2>Optional providers</h2>
@@ -94,5 +108,9 @@
         </section>
       </div>
     </main>
+    <footer class="shell footer">
+      <span>TaskBandit docs · <a href="../index.html">All projects</a></span>
+      <a href="https://github.com/kriziw/TaskBandit">GitHub</a>
+    </footer>
   </body>
 </html>

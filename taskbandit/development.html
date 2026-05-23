@@ -8,7 +8,11 @@
   </head>
   <body>
     <header class="shell page-hero">
-      <img class="project-logo project-logo--docs" src="../assets/taskbandit-docs-logo.svg" alt="TaskBandit logo" />
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="../assets/taskbandit-logo-dark.png" />
+        <source media="(prefers-color-scheme: light)" srcset="../assets/taskbandit-logo-light.png" />
+        <img class="project-logo project-logo--docs" src="../assets/taskbandit-logo-light.png" alt="TaskBandit logo" />
+      </picture>
       <p class="eyebrow">Development</p>
       <h1>Work on TaskBandit locally.</h1>
       <p>Use the repo docs for deep implementation details; this page is the high-level setup map.</p>
@@ -50,6 +54,15 @@ npm install
 npm run prisma:generate
 npm run build
 npm run test</code></pre>
+          <p>When working on the rewards system, run <code>prisma migrate dev</code> to apply any pending migrations before generating the client:</p>
+          <pre><code>npm run prisma:migrate:dev
+npm run prisma:generate</code></pre>
+          <p>Key server modules relevant to recent features:</p>
+          <ul>
+            <li><code>src/modules/rewards/</code> — rewards catalogue, redemption flow, eligibility enforcement, approval/rejection, and operator import endpoints.</li>
+            <li><code>src/modules/bootstrap/starter-rewards.catalog.ts</code> — the nine starter rewards seeded into every new household (all disabled by default).</li>
+            <li><code>src/modules/achievements/</code> — achievement milestone definitions and unlock logic.</li>
+          </ul>
         </section>
         <section class="doc-panel">
           <h2>Source repository</h2>
@@ -57,5 +70,9 @@ npm run test</code></pre>
         </section>
       </div>
     </main>
+    <footer class="shell footer">
+      <span>TaskBandit docs · <a href="../index.html">All projects</a></span>
+      <a href="https://github.com/kriziw/TaskBandit">GitHub</a>
+    </footer>
   </body>
 </html>
