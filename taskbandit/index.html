@@ -3,15 +3,29 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>TaskBandit | kriziw Docs</title>
+    <title>TaskBandit | Self-hosted chore manager</title>
+    <meta name="description" content="TaskBandit is a self-hosted household task manager with chore assignments, streaks, achievements, a rewards shop, proof photos, and Android support." />
     <link rel="stylesheet" href="../styles.css" />
   </head>
   <body>
-    <header class="shell page-hero">
-      <img class="project-logo project-logo--docs" src="../assets/taskbandit-docs-logo.svg" alt="TaskBandit logo" />
-      <p class="eyebrow">TaskBandit</p>
-      <h1>Self-hosted chore management.</h1>
-      <p>Run the API server, browser/PWA client, admin UI, and native Android app for playful household task management.</p>
+    <header class="shell overview-hero">
+      <div class="overview-hero-inner">
+        <div class="overview-hero-text">
+          <p class="eyebrow">TaskBandit</p>
+          <picture>
+            <source media="(prefers-color-scheme: dark)" srcset="../assets/taskbandit-logo-dark.png" />
+            <source media="(prefers-color-scheme: light)" srcset="../assets/taskbandit-logo-light.png" />
+            <img src="../assets/taskbandit-logo-light.png" alt="TaskBandit" style="max-width: min(320px, 72%); max-height: 5rem; object-fit: contain; display: block; margin-bottom: 0.9rem; filter: drop-shadow(0 8px 18px rgba(66,42,16,0.14));" />
+          </picture>
+          <p>Self-hosted chores, points, streaks, rewards, and native Android support for households that want more than a checklist.</p>
+          <div class="actions">
+            <a class="button primary" href="./quick-start.html">Quick Start</a>
+            <a class="button secondary" href="./clients.html">What's included</a>
+            <a class="button secondary" href="https://github.com/kriziw/TaskBandit">GitHub</a>
+          </div>
+        </div>
+        <img class="mascot-hero" src="../assets/taskbandit-mascot.png" alt="Bandit the TaskBandit raccoon mascot" />
+      </div>
     </header>
     <main class="shell doc-layout">
       <aside class="sidebar" aria-label="TaskBandit documentation navigation">
@@ -29,24 +43,50 @@
       <div>
         <section class="doc-panel">
           <h2>What it does</h2>
-          <p>TaskBandit is a self-hosted household task manager with chore assignment, approvals, recurring work, follow-up tasks, proof photos, live updates, and both browser/PWA and native Android clients.</p>
-          <p>Templates are organised as group, type, and optional sub-type so daily chore lists stay readable while admins can still model richer routines such as laundry chains, room cleaning, and waste collection.</p>
+          <p>TaskBandit is a self-hosted household task manager that turns daily chores into a lightweight game. Household members complete tasks, earn points, unlock achievements, and can redeem those points for real-world rewards through a parent-managed shop — all running on your own server with no cloud dependency.</p>
+          <p>Templates are organised into group, type, and optional sub-type layers so chore lists stay readable on both the admin side and the daily client views. Chores can chain — completing one task can automatically trigger a follow-up, modelling routines like laundry cycles, kitchen cleanups, and bedding changes.</p>
         </section>
+
         <section class="doc-panel">
-          <h2>Core areas</h2>
+          <h2>Feature overview</h2>
           <ul>
-            <li><a href="./quick-start.html">Quick Start</a> covers the fastest path to a running local stack.</li>
-            <li><a href="./deployment.html">Deployment</a> explains the server and web container split.</li>
-            <li><a href="./reverse-proxy.html">Reverse Proxy</a> covers HTTPS, CORS, headers, and WebSockets.</li>
-            <li><a href="./troubleshooting.html">Troubleshooting</a> gathers practical checks for setup, proxy, certificate, env, and reset issues.</li>
-            <li><a href="./clients.html">Clients</a> compares the admin UI, browser/PWA client, and Android app.</li>
+            <li><strong>Chore assignment</strong> — round-robin, specific-member, or follow-up chains triggered on completion.</li>
+            <li><strong>Points &amp; streaks</strong> — members earn points for completions; streaks track consistent daily progress and appear on the leaderboard.</li>
+            <li><strong>Achievements</strong> — configurable unlock milestones that reward members for streaks, perfect days, and total completions.</li>
+            <li><strong>Rewards shop</strong> — household admins define a catalogue of real-world incentives (screen time, treats, activities, allowance). Children redeem accumulated points; admins approve requests or configure auto-approval. Per-reward eligibility covers child-only, adult-only, or shared rewards.</li>
+            <li><strong>Overdue section</strong> — missed chores surface with prominent alerting on both web and Android so nothing slips.</li>
+            <li><strong>Proof photos</strong> — optional photo evidence required before a chore is accepted as complete.</li>
+            <li><strong>Takeover requests</strong> — members can request or grant coverage of another member's chore.</li>
+            <li><strong>Templates with translations</strong> — built-in starter templates in English, German, and Hungarian; the admin editor keeps all language variants in compact tabs.</li>
+            <li><strong>Web/PWA + Android</strong> — a browser-first client installable as a PWA, plus a native Kotlin/Compose Android app with offline queueing, speed-dial FAB, and in-app update delivery.</li>
+            <li><strong>Live sync</strong> — foreground sync while the app is open; optional Web Push and FCM for background delivery.</li>
           </ul>
         </section>
+
+        <section class="doc-panel">
+          <h2>Core documentation areas</h2>
+          <ul>
+            <li><a href="./quick-start.html">Quick Start</a> — fastest path to a running local stack with Docker Compose.</li>
+            <li><a href="./deployment.html">Deployment</a> — two-container shape, image names, and upgrade order.</li>
+            <li><a href="./reverse-proxy.html">Reverse Proxy</a> — HTTPS, headers, WebSocket routing, Nginx and Traefik examples.</li>
+            <li><a href="./clients.html">Clients</a> — what the admin UI, client web/PWA, and Android app each cover.</li>
+            <li><a href="./configuration.html">Configuration</a> — environment variables, optional providers, and household settings.</li>
+            <li><a href="./troubleshooting.html">Troubleshooting</a> — practical checks for install, proxy, certificate, and reset issues.</li>
+            <li><a href="./releases.html">Releases</a> — Docker images, versioning, Android APK signing, and release automation.</li>
+            <li><a href="./development.html">Development</a> — local setup for server, web, and Android workspaces.</li>
+          </ul>
+        </section>
+
         <section class="doc-panel">
           <h2>Start here</h2>
-          <p>For a new install, begin with the <a href="./quick-start.html">quick start</a>, then review <a href="./configuration.html">configuration</a> and <a href="./reverse-proxy.html">reverse proxy setup</a> before exposing the app publicly. During first setup, you can optionally import the built-in starter templates with translated labels and linked follow-up tasks.</p>
+          <p>For a new install, start with the <a href="./quick-start.html">quick start</a>. Edit <code>.env</code> before exposing the app publicly — at minimum change the JWT secret, database password, and public base URLs. The first household setup can import built-in starter templates and starter rewards (all disabled by default) so you can enable exactly the ones that fit your household.</p>
+          <p>Review <a href="./configuration.html">configuration</a> and <a href="./reverse-proxy.html">reverse proxy setup</a> for production installs. The <a href="./troubleshooting.html">troubleshooting guide</a> covers common CORS, proxy, and container issues.</p>
         </section>
       </div>
     </main>
+    <footer class="shell footer">
+      <span>TaskBandit docs · <a href="../index.html">All projects</a></span>
+      <a href="https://github.com/kriziw/TaskBandit">GitHub</a>
+    </footer>
   </body>
 </html>

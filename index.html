@@ -34,10 +34,14 @@
     <main>
       <section class="shell project-grid" aria-label="Project documentation areas">
         <a class="project-card project-card--taskbandit" href="./taskbandit/">
-          <img class="project-card__logo project-card__logo--docs" src="./assets/taskbandit-docs-logo.svg" alt="TaskBandit logo" />
+          <picture>
+            <source media="(prefers-color-scheme: dark)" srcset="./assets/taskbandit-logo-dark.png" />
+            <source media="(prefers-color-scheme: light)" srcset="./assets/taskbandit-logo-light.png" />
+            <img class="project-card__logo project-card__logo--docs" src="./assets/taskbandit-logo-light.png" alt="TaskBandit logo" />
+          </picture>
           <span>Households</span>
           <h2>TaskBandit</h2>
-          <p>Self-hosted chores, approvals, streaks, web/PWA clients, and Android support.</p>
+          <p>Self-hosted chores, points, streaks, rewards shop, achievements, and native Android support.</p>
         </a>
         <a class="project-card project-card--mindbuzz" href="./mindbuzz/">
           <img class="project-card__logo project-card__logo--wide" src="./assets/mindbuzz-logo.svg" alt="MindBuzz logo" />

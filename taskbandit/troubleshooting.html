@@ -8,7 +8,11 @@
   </head>
   <body>
     <header class="shell page-hero">
-      <img class="project-logo project-logo--docs" src="../assets/taskbandit-docs-logo.svg" alt="TaskBandit logo" />
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="../assets/taskbandit-logo-dark.png" />
+        <source media="(prefers-color-scheme: light)" srcset="../assets/taskbandit-logo-light.png" />
+        <img class="project-logo project-logo--docs" src="../assets/taskbandit-logo-light.png" alt="TaskBandit logo" />
+      </picture>
       <p class="eyebrow">Troubleshooting</p>
       <h1>Useful checks when TaskBandit does not behave as expected.</h1>
       <p>Start with the health checks, then verify runtime config, proxy routing, certificates, and persistent data.</p>
@@ -98,12 +102,29 @@ docker compose up -d --force-recreate</code></pre>
         </section>
 
         <section class="doc-panel">
+          <h2>Rewards: redemption not deducting points</h2>
+          <p>If a child submits a redemption but no points are deducted and the request stays in a pending state, the household is running with <em>Require reward approval</em> enabled (the default). An admin or parent must open the Rewards Manager approval queue and approve the request before points are deducted and the member is notified.</p>
+          <p>If you want redemptions to be instant and automatic, an admin can disable the setting from the admin Settings page. With approval off, points are deducted at the moment of submission.</p>
+          <p>If a reward is not visible in the child's shop at all, check that the reward is enabled in the Rewards Manager catalogue. All starter rewards are disabled by default and must be enabled individually.</p>
+          <p>If an eligible reward still does not appear for a specific member, check the per-reward eligibility setting. A reward marked child-only will not appear for parent or admin members, and a reward marked adult-only will not appear for child members.</p>
+        </section>
+
+        <section class="doc-panel">
+          <h2>Overdue section not appearing</h2>
+          <p>The overdue section surfaces on both the web client and Android only when there are chores whose due time has passed without a completion. If the section is consistently absent, check that chore templates have scheduled due times configured and that the household timezone is set correctly in admin settings.</p>
+        </section>
+
+        <section class="doc-panel">
           <h2>Demo data</h2>
           <p>Demo seed data is off by default. Use it only for testing or walkthroughs:</p>
           <pre><code>TASKBANDIT_BOOTSTRAP_SEED_DEMO_DATA=true</code></pre>
-          <p>For normal installs, keep it false and use the first-household setup flow instead.</p>
+          <p>For normal installs, keep it false and use the first-household setup flow instead. The first-household setup flow seeds starter chore templates (with translations) and the nine starter rewards, all disabled by default.</p>
         </section>
       </div>
     </main>
+    <footer class="shell footer">
+      <span>TaskBandit docs · <a href="../index.html">All projects</a></span>
+      <a href="https://github.com/kriziw/TaskBandit">GitHub</a>
+    </footer>
   </body>
 </html>
