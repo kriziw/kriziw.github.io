@@ -18,7 +18,7 @@
       <p>The server handles API/auth/realtime work. The web container serves both browser surfaces.</p>
     </header>
     <main class="shell doc-layout">
-      <aside class="sidebar" aria-label="TaskBandit documentation navigation">
+      <aside class="sidebar" id="doc-sidebar" aria-label="TaskBandit documentation navigation">
         <a href="../index.html">All projects</a>
         <a href="./index.html">Overview</a>
         <a href="./quick-start.html">Quick Start</a>
@@ -26,6 +26,7 @@
         <a href="./reverse-proxy.html">Reverse Proxy</a>
         <a href="./troubleshooting.html">Troubleshooting</a>
         <a href="./clients.html">Clients</a>
+        <a href="./how-to.html">How To</a>
         <a href="./configuration.html">Configuration</a>
         <a href="./releases.html">Releases</a>
         <a href="./development.html">Development</a>
@@ -74,5 +75,10 @@
       <span>TaskBandit docs · <a href="../index.html">All projects</a></span>
       <a href="https://github.com/kriziw/TaskBandit">GitHub</a>
     </footer>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="doc-sidebar">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+    <script src="../nav.js"></script>
   </body>
 </html>
