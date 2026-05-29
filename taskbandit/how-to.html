@@ -72,11 +72,16 @@
             <li>Open the <strong>Rewards</strong> tab (web or Android). Your current points balance appears at the top.</li>
             <li>Browse the enabled rewards. Each card shows the reward name, description, point cost, and an eligibility badge if the reward is restricted to a specific member type.</li>
             <li>Rewards you cannot yet afford show a dimmed Redeem button. A cooldown notice appears on any reward you must wait before redeeming again.</li>
-            <li>Tap <strong>Redeem</strong> on the reward you want. A confirmation dialog shows the point cost and your remaining balance after redemption.</li>
+            <li>Tap <strong>Redeem</strong> on the reward you want. A confirmation dialog opens.
+              <ul>
+                <li>For standard rewards, the dialog shows the point cost and your remaining balance after redemption.</li>
+                <li>For <strong>daily-exclusive</strong> rewards (shown with an upcoming-bookings list on the card), the dialog asks you to pick a target date — today up to 14 days ahead. Dates already booked by another household member are flagged with a conflict notice and cannot be confirmed.</li>
+              </ul>
+            </li>
             <li>Confirm the redemption.
               <ul>
                 <li>If the household uses automatic approval, points are deducted immediately and you receive a confirmation.</li>
-                <li>If the household requires approval, a pending request is created. Your points are held until an admin or parent approves or rejects it. The request appears in your <strong>History</strong> tab with a <em>Pending</em> status.</li>
+                <li>If the household requires approval, a pending request is created. Your points are held until an admin or parent approves or rejects it. The request appears in your <strong>History</strong> tab with a <em>Pending</em> status and, for daily-exclusive rewards, the booked date.</li>
               </ul>
             </li>
           </ol>
@@ -92,6 +97,21 @@
         </section>
 
         <section class="doc-panel">
+          <h2>Reschedule a reward booking</h2>
+          <p>If you booked a daily-exclusive reward for a date that no longer works, you can move it without losing your booking.</p>
+          <ol>
+            <li>Open the <strong>Rewards</strong> tab. Your upcoming bookings appear on the relevant reward cards with the booked date and a <strong>Reschedule</strong> button.</li>
+            <li>Tap <strong>Reschedule</strong>. A dialog opens with a date picker limited to today through 14 days out.</li>
+            <li>Pick the new date. If that date is already taken by another member, a conflict notice appears and the confirm button is disabled.</li>
+            <li>Confirm.
+              <ul>
+                <li>If the original booking was still <em>Pending</em>, it is updated in place to the new date.</li>
+                <li>If it was already <em>Approved</em>, the original booking is cancelled and your points are refunded, then a new pending booking is created for the new date.</li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+        <section class="doc-panel">
           <h2>Approve or reject a reward redemption (admin / parent)</h2>
           <p>When a member redeems a reward and approval is required, a badge appears on the Rewards nav item showing the number of pending requests.</p>
           <ol>
@@ -104,7 +124,7 @@
 
         <section class="doc-panel">
           <h2>Enable starter rewards (admin)</h2>
-          <p>TaskBandit seeds nine starter rewards into every new household, all disabled by default: extra screen time (30 min and 1 hour), a treat of their choice, pick tonight's dinner, pick the movie, choose the family activity, stay up 30 minutes later, skip a chore, and pocket money bonus.</p>
+          <p>TaskBandit seeds twenty-three starter rewards into every new household, all disabled by default. They span six categories — screen time, treat &amp; food, privilege &amp; passes, activity &amp; experiences, and allowance — including extra screen time, pick tonight's dinner, vote for takeout, homework-free night, skip dinner cleanup, extended curfew, family ice cream trip, choose a weekend outing, host a sleepover, and bonus allowance. Three of the starter rewards (<em>Pick tonight's dinner</em>, <em>Vote for Takeout Tonight</em>, and <em>Pick the Game Night Game</em>) use the daily-exclusive workflow: only one member can book each reward on any given date.</p>
           <ol>
             <li>Open the admin UI and navigate to <strong>Rewards</strong>.</li>
             <li>The catalogue is grouped by category. Each row has a toggle on the right.</li>
@@ -126,6 +146,7 @@
                 <li><strong>Max redemptions per child</strong> — optional lifetime cap per member; leave blank for unlimited.</li>
                 <li><strong>Cooldown (days)</strong> — optional minimum gap between redemptions; leave blank for no cooldown.</li>
                 <li><strong>Eligibility</strong> — <em>All members</em>, <em>Children only</em>, or <em>Adults only</em>.</li>
+                <li><strong>Workflow type</strong> — <em>Standard</em> (default) for normal one-off redemptions, or <em>Daily exclusive</em> for household-level once-per-date rewards where members book a specific date in advance and only one booking per date is allowed across the whole household.</li>
               </ul>
             </li>
             <li>Click <strong>Save</strong>. The reward is created but disabled. Flip the toggle in the catalogue list to make it visible in the shop.</li>
