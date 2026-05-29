@@ -37,7 +37,7 @@
           <p>The client UI is served at <code>/</code>. It is browser-first, works on desktop and mobile browsers, and can be installed as a PWA where the browser supports it. Children, parents, and admin members all use the same URL; the interface adapts to their role.</p>
           <ul>
             <li><strong>Chores</strong> — today's assigned tasks, overdue section (missed chores surfaced with prominent alerting so nothing slips), completion flow, proof photo upload where required, and takeover requests to hand off or cover another member's chore.</li>
-            <li><strong>Rewards shop</strong> — a catalogue of enabled rewards browsable by category. Each card shows the reward title, description, point cost, and an eligibility badge (child-only, adult-only, or available to all). Household members can redeem rewards for points; a confirmation dialog shows the current balance and what will remain after redemption. A history tab lists past requests with their approval status.</li>
+            <li><strong>Rewards shop</strong> — a catalogue of enabled rewards browsable by category. Each card shows the reward title, description, point cost, and an eligibility badge (child-only, adult-only, or available to all). Household members can redeem rewards for points; a confirmation dialog shows the current balance and what will remain after redemption. A history tab lists past requests with their approval status and, for daily-exclusive rewards, the booked date. Daily-exclusive reward cards also show upcoming bookings by other household members so everyone can see which dates are already taken.</li>
             <li><strong>Achievements</strong> — unlockable milestones shown as a panel or badge collection. Achievements are earned by streaks, completing a perfect day, or reaching total completion milestones. Unlocked achievements are visible to the whole household on the leaderboard.</li>
             <li><strong>Points and streaks</strong> — members earn points for each completed chore. A streak counter tracks consecutive days with at least one completion and appears on the leaderboard alongside total points.</li>
             <li><strong>Leaderboard</strong> — household ranking by points and current streaks, visible to all members.</li>
@@ -56,9 +56,10 @@
             <li><strong>Rewards Manager</strong> — manage the household reward catalogue:
               <ul>
                 <li>Browse starter and custom rewards grouped by category (screen time, treat, activity, privilege, allowance, custom).</li>
-                <li>Enable or disable individual rewards. Starter rewards are all disabled by default; enable only the ones that fit your household.</li>
+                <li>Enable or disable individual rewards. The built-in starter catalogue ships twenty-three rewards across six categories, all disabled by default; enable only the ones that fit your household.</li>
                 <li>Create fully custom rewards with point cost, optional per-child redemption limit, and optional cooldown period.</li>
                 <li>Set per-reward eligibility: child-only, adult-only, or available to all members.</li>
+                <li>Set the workflow type: <em>Standard</em> for normal redemptions or <em>Daily exclusive</em> for once-per-date household rewards. Daily-exclusive rewards let members book a future date; only one booking per date is allowed across the whole household.</li>
                 <li>Approval queue — review pending redemption requests submitted by household members. Approve to deduct points and notify the member, or reject with an optional note. The queue badge shows the count of pending requests.</li>
                 <li>Household setting: <em>Require reward approval</em> — when disabled, redemptions are approved and points deducted automatically on submission.</li>
               </ul>
@@ -73,7 +74,7 @@
           <p>The Android app provides a native experience alongside the browser/PWA client. It talks directly to the API server and is built with Kotlin and Jetpack Compose.</p>
           <ul>
             <li><strong>Bottom navigation</strong> — children see four tabs: Chores, Leaderboard, Rewards, Settings. Parents and admins see five: Chores, Leaderboard, Rewards, Create, Settings. The Rewards tab badge shows the count of pending redemption approvals for admin and parent users.</li>
-            <li><strong>Rewards tab (child)</strong> — a scrollable shop with category filter chips and reward cards showing cost and eligibility. Tapping a card opens a confirmation dialog with the current balance and balance after redemption. A collapsible section shows the member's redemption history.</li>
+            <li><strong>Rewards tab (child)</strong> — a scrollable shop with category filter chips and reward cards showing cost and eligibility. Tapping a card opens a confirmation dialog with the current balance and balance after redemption. For daily-exclusive rewards, the dialog includes a date picker (today through 14 days out) and highlights any dates already booked by other members. Upcoming bookings — yours and others&#39; — appear as chips on the reward card. A collapsible section shows the member's redemption history.</li>
             <li><strong>Rewards tab (parent/admin)</strong> — shows the pending approval queue with approve and reject actions for each pending redemption. Full catalogue management is available in the web admin workspace.</li>
             <li><strong>Speed dial FAB</strong> — a floating action button expands to shortcuts for the most common quick actions so frequent operations stay one tap away.</li>
             <li><strong>In-app update notification</strong> — when a new APK build is available, a floating update bubble appears in the corner. Tapping it starts the download and install without leaving the app.</li>
@@ -95,7 +96,7 @@
 
         <section class="doc-panel">
           <h2>Notification priorities</h2>
-          <p>TaskBandit treats mobile and browser push as the primary delivery path for household activity: chore assignments, overdue alerts, reward redemption requests, reward approvals and rejections, and achievement unlocks. SMTP email is intended for account recovery, admin-style messages such as invites, and fallback delivery when no push-ready device is registered.</p>
+          <p>TaskBandit treats mobile and browser push as the primary delivery path for household activity: chore assignments, overdue alerts, reward redemption requests, reward approvals and rejections, exclusive reward booking notifications (sent to all household members when a daily-exclusive reward is claimed), and achievement unlocks. SMTP email is intended for account recovery, admin-style messages such as invites, and fallback delivery when no push-ready device is registered.</p>
         </section>
       </div>
     </main>
